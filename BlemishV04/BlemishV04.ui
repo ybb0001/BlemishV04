@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>970</width>
+    <width>960</width>
     <height>770</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>BlemishV04</string>
+   <string>BlemishV05</string>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -19,9 +19,9 @@
   <widget class="QPushButton" name="pushButton_open_image">
    <property name="geometry">
     <rect>
-     <x>850</x>
-     <y>640</y>
-     <width>100</width>
+     <x>859</x>
+     <y>630</y>
+     <width>91</width>
      <height>30</height>
     </rect>
    </property>
@@ -54,14 +54,14 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>680</y>
+     <x>740</x>
+     <y>640</y>
      <width>100</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>异物测试1</string>
+    <string>异物测试Size1</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_image_processing_2">
@@ -70,9 +70,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>850</x>
-     <y>720</y>
-     <width>100</width>
+     <x>860</x>
+     <y>700</y>
+     <width>91</width>
      <height>30</height>
     </rect>
    </property>
@@ -106,9 +106,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="Threshold_A">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>90</x>
      <y>645</y>
-     <width>70</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -123,7 +123,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>645</y>
      <width>75</width>
      <height>28</height>
@@ -139,7 +139,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>675</y>
      <width>75</width>
      <height>28</height>
@@ -155,7 +155,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>705</y>
      <width>75</width>
      <height>28</height>
@@ -171,7 +171,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>735</y>
      <width>75</width>
      <height>28</height>
@@ -187,9 +187,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="Threshold_B">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>90</x>
      <y>675</y>
-     <width>70</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -204,9 +204,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="Threshold_C">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>90</x>
      <y>705</y>
-     <width>70</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -221,9 +221,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="Threshold_D">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>90</x>
      <y>735</y>
-     <width>70</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -238,9 +238,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="edge_Allow">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>140</x>
      <y>705</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -255,9 +255,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="outer_Allow">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>140</x>
      <y>675</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -272,9 +272,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="inner_Allow">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>140</x>
      <y>645</y>
-     <width>51</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -289,7 +289,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>140</x>
      <y>615</y>
      <width>41</width>
      <height>28</height>
@@ -305,7 +305,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>190</x>
      <y>615</y>
      <width>41</width>
      <height>28</height>
@@ -321,9 +321,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="inner_Spec">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>190</x>
      <y>645</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -338,9 +338,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="edge_Spec">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>190</x>
      <y>705</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -355,9 +355,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="outer_Spec">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>190</x>
      <y>675</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -372,9 +372,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="inner_Limit">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>240</x>
      <y>645</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -389,9 +389,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="edge_Limit">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>240</x>
      <y>705</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -406,9 +406,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="outer_Limit">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>240</x>
      <y>675</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -423,7 +423,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>240</x>
      <y>615</y>
      <width>41</width>
      <height>28</height>
@@ -439,9 +439,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="inner_Array">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>290</x>
      <y>645</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -456,9 +456,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="edge_Array">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>290</x>
      <y>705</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -473,9 +473,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="outer_Array">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>290</x>
      <y>675</y>
-     <width>50</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -490,7 +490,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>290</x>
      <y>615</y>
      <width>41</width>
      <height>28</height>
@@ -506,8 +506,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QPushButton" name="saveValue">
    <property name="geometry">
     <rect>
-     <x>620</x>
-     <y>720</y>
+     <x>860</x>
+     <y>730</y>
      <width>90</width>
      <height>30</height>
     </rect>
@@ -556,7 +556,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>890</x>
      <y>350</y>
-     <width>70</width>
+     <width>61</width>
      <height>28</height>
     </rect>
    </property>
@@ -589,7 +589,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>890</x>
      <y>290</y>
-     <width>70</width>
+     <width>61</width>
      <height>28</height>
     </rect>
    </property>
@@ -606,7 +606,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>890</x>
      <y>320</y>
-     <width>70</width>
+     <width>61</width>
      <height>28</height>
     </rect>
    </property>
@@ -637,9 +637,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>615</y>
-     <width>581</width>
+     <x>10</x>
+     <y>620</y>
+     <width>451</width>
      <height>151</height>
     </rect>
    </property>
@@ -652,7 +652,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QCheckBox" name="greenMode">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>340</x>
       <y>128</y>
       <width>118</width>
       <height>20</height>
@@ -668,9 +668,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QTextEdit" name="out_Size">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>50</y>
-      <width>65</width>
+      <x>390</x>
+      <y>60</y>
+      <width>51</width>
       <height>28</height>
      </rect>
     </property>
@@ -685,9 +685,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QTextEdit" name="in_Size">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>20</y>
-      <width>65</width>
+      <x>390</x>
+      <y>30</y>
+      <width>51</width>
       <height>28</height>
      </rect>
     </property>
@@ -702,8 +702,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>20</y>
+      <x>340</x>
+      <y>30</y>
       <width>61</width>
       <height>28</height>
      </rect>
@@ -718,8 +718,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>50</y>
+      <x>340</x>
+      <y>60</y>
       <width>71</width>
       <height>28</height>
      </rect>
@@ -734,9 +734,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QTextEdit" name="SecondThd">
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>390</x>
       <y>90</y>
-      <width>65</width>
+      <width>51</width>
       <height>28</height>
      </rect>
     </property>
@@ -751,7 +751,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_22">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>340</x>
       <y>90</y>
       <width>61</width>
       <height>28</height>
@@ -770,7 +770,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>830</x>
      <y>125</y>
-     <width>135</width>
+     <width>131</width>
      <height>491</height>
     </rect>
    </property>
@@ -782,7 +782,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>60</x>
       <y>140</y>
-      <width>70</width>
+      <width>61</width>
       <height>28</height>
      </rect>
     </property>
@@ -810,6 +810,9 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
+   <zorder>Size1_A_Spec</zorder>
+   <zorder>blemishMode</zorder>
+   <zorder>Size1_Height</zorder>
   </widget>
   <widget class="QLabel" name="label_17">
    <property name="geometry">
@@ -835,7 +838,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>850</x>
      <y>230</y>
-     <width>51</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -850,9 +853,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_15">
    <property name="geometry">
     <rect>
-     <x>860</x>
+     <x>870</x>
      <y>140</y>
-     <width>75</width>
+     <width>61</width>
      <height>28</height>
     </rect>
    </property>
@@ -902,7 +905,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>920</x>
      <y>170</y>
-     <width>41</width>
+     <width>31</width>
      <height>28</height>
     </rect>
    </property>
@@ -919,7 +922,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>910</x>
      <y>230</y>
-     <width>51</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -936,7 +939,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>890</x>
      <y>450</y>
-     <width>70</width>
+     <width>61</width>
      <height>28</height>
     </rect>
    </property>
@@ -953,7 +956,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>910</x>
      <y>415</y>
-     <width>51</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -970,7 +973,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>890</x>
      <y>510</y>
-     <width>70</width>
+     <width>61</width>
      <height>28</height>
     </rect>
    </property>
@@ -987,7 +990,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>890</x>
      <y>540</y>
-     <width>70</width>
+     <width>61</width>
      <height>28</height>
     </rect>
    </property>
@@ -1004,7 +1007,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>890</x>
      <y>480</y>
-     <width>70</width>
+     <width>61</width>
      <height>28</height>
     </rect>
    </property>
@@ -1088,7 +1091,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>850</x>
      <y>415</y>
-     <width>51</width>
+     <width>41</width>
      <height>28</height>
     </rect>
    </property>
@@ -1122,8 +1125,8 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="geometry">
     <rect>
-     <x>620</x>
-     <y>640</y>
+     <x>860</x>
+     <y>670</y>
      <width>90</width>
      <height>30</height>
     </rect>
@@ -1141,18 +1144,44 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="geometry">
     <rect>
-     <x>730</x>
+     <x>740</x>
+     <y>680</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>异物测试Size2</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_BlemishCheckNew">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>740</x>
      <y>720</y>
      <width>100</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>异物测试2</string>
+    <string>异物新算法</string>
    </property>
   </widget>
-  <zorder>groupBox_2</zorder>
+  <widget class="QTextBrowser" name="log">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>620</y>
+     <width>261</width>
+     <height>141</height>
+    </rect>
+   </property>
+  </widget>
   <zorder>groupBox</zorder>
+  <zorder>groupBox_2</zorder>
   <zorder>pushButton_open_image</zorder>
   <zorder>pushButton_image_processing</zorder>
   <zorder>pushButton_image_processing_2</zorder>
@@ -1210,6 +1239,8 @@ p, li { white-space: pre-wrap; }
   <zorder>label_show_image</zorder>
   <zorder>saveGray</zorder>
   <zorder>BlemishCheck2</zorder>
+  <zorder>pushButton_BlemishCheckNew</zorder>
+  <zorder>log</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

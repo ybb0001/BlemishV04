@@ -36,6 +36,9 @@
     <ClCompile Include="BlemishV04.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ISM_Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="BlemishV04.h">
@@ -54,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_BlemishV04.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISM_Test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="BlemishV04.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ISM_Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="BlemishV04.h" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_BlemishV04.h" />
+    <ClInclude Include="ISM_Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

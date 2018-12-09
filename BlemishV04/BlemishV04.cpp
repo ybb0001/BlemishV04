@@ -374,6 +374,7 @@ void BlemishV04::on_pushButton_open_image_clicked()
 		ui->pushButton_image_processing_2->setEnabled(true);
 		ui->BlemishCheck2->setEnabled(true);
 		ui->saveGray->setEnabled(true);
+		ui->pushButton_BlemishCheckNew->setEnabled(true);
 
 		imgScaled = showImage.scaled(ui->label_show_image->size(), Qt::KeepAspectRatio);
 		//imgScaled = showImage.scaledToHeight(600, Qt::FastTransformation);
@@ -683,13 +684,7 @@ void BlemishV04::blemishModeCheck(int mode) {
 }
 
 
-void BlemishV04::on_pushButton_image_processing_clicked()
-{
-	image = imageCopy.clone();
-	cvtColor(image, gray_image, CV_BGR2GRAY);
-	NG = false;
-
-	blemishModeCheck(0);
+void BlemishV04::displayResult() {
 
 	ui->textBrowser->setFontPointSize(48);
 
@@ -701,7 +696,19 @@ void BlemishV04::on_pushButton_image_processing_clicked()
 		ui->textBrowser->setTextColor(QColor(0, 255, 0, 255));
 		ui->textBrowser->setText("OK");
 	}
+
 	fout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+}
+
+void BlemishV04::on_pushButton_image_processing_clicked()
+{
+	image = imageCopy.clone();
+	cvtColor(image, gray_image, CV_BGR2GRAY);
+	NG = false;
+
+	blemishModeCheck(0);
+	displayResult();
+	
 	Mat dst;
 	cvtColor(image, dst, CV_BGR2RGB);
 	ui->textBrowser->setAlignment(Qt::AlignCenter);
@@ -712,6 +719,7 @@ void BlemishV04::on_pushButton_image_processing_clicked()
 	ui->label_show_image->setPixmap(QPixmap::fromImage(imgScaled));
 }
 
+
 void BlemishV04::on_pushButton_blemishcheck2_clicked()
 {
 	image = imageCopy.clone();
@@ -719,18 +727,8 @@ void BlemishV04::on_pushButton_blemishcheck2_clicked()
 	NG = false;
 
 	blemishModeCheck(1);
+	displayResult();
 
-	ui->textBrowser->setFontPointSize(48);
-
-	if (NG) {
-		ui->textBrowser->setTextColor(QColor(255, 0, 0, 255));
-		ui->textBrowser->setText("NG");	
-	}
-	else {
-		ui->textBrowser->setTextColor(QColor(0, 255, 0, 255));
-		ui->textBrowser->setText("OK");
-	}
-	fout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 	Mat dst;
 	cvtColor(image, dst, CV_BGR2RGB);
 	ui->textBrowser->setAlignment(Qt::AlignCenter);
@@ -757,6 +755,7 @@ void BlemishV04::saveGrayImage_clicked()
 		}
 	}
 }
+
 
 uchar AvgValue(const Mat& image, int x, int y, int width, int height) {
 
@@ -1048,16 +1047,7 @@ void BlemishV04::on_pushButton_image_processing_2_clicked() {
 	WBdotCheck(RangeX1, image.rows - RangeY1, image.cols - RangeX1, image.rows, 2);		//C
 	WBdotCheck(image.cols - RangeX1, image.rows - RangeY1, image.cols, image.rows, 3);    //D
 
-	ui->textBrowser->setFontPointSize(48);
-
-	if (NG) {
-		ui->textBrowser->setTextColor(QColor(255, 0, 0, 255));
-		ui->textBrowser->setText("NG");
-	}
-	else {
-		ui->textBrowser->setTextColor(QColor(0, 255, 0, 255));
-		ui->textBrowser->setText("OK");
-	}
+	displayResult();
 
 	Mat dst;
 	cvtColor(image, dst, CV_BGR2RGB);
@@ -1067,9 +1057,158 @@ void BlemishV04::on_pushButton_image_processing_2_clicked() {
 	//imgScaled = showImage.scaledToHeight(600, Qt::FastTransformation);
 	imgScaled = showImage.scaled(ui->label_show_image->size(), Qt::KeepAspectRatio);
 	ui->label_show_image->setPixmap(QPixmap::fromImage(imgScaled));
-
-	fout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 	
 }
 
 
+
+void BlemishV04::on_pushButton_BlemishCheckNew_clicked() {
+
+	cvtColor(imageCopy, gray_image, CV_BGR2GRAY);
+	NG = false;
+	Point3i Center = OC(gray_image);
+
+	string strx = to_string(Center.x);
+	string stry = to_string(Center.y);
+	strx = "x= " + strx + "\n";
+	stry = "y= " + stry + "\n";
+	ui->log->insertPlainText(strx.c_str());
+	ui->log->insertPlainText(stry.c_str());
+
+}
+
+void BlemishV04::on_pushButton_circle_Detect_clicked() {
+
+	image = imageCopy.clone();
+	cvtColor(image, gray_image, CV_BGR2GRAY);
+	NG = false;
+
+	img2 = gray_image.clone();
+
+	GaussianBlur(img2, img2, Size(9, 9), 2, 2);
+	threshold(img2, img3, 140, 220, THRESH_BINARY);  //图像二值化，，
+//	namedWindow("detecte circles", CV_NORMAL);
+//	imshow("detecte circles", img3);
+	Canny(img3, img3, 50, 100);//边缘检测
+//	namedWindow("detect circles", CV_NORMAL);
+//	imshow("detect circles", img3);
+
+
+
+
+
+	vector<vector<Point>>contours;
+	vector<Vec4i>hierarchy;
+	findContours(img3, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);//查找出所有的圆边界
+	
+	int index = 0;
+	for (; index >= 0; index = hierarchy[index][0])
+	{
+		//Scalar color(rand() & 255, rand() & 255, rand() & 255);
+		Scalar color(0, 0, 0);
+		drawContours(gray_image, contours, index, color, CV_FILLED, 8, hierarchy);
+
+		////绘制轮廓的最小外结圆
+		//Point2f Center;
+		//float Radius;
+		//minEnclosingCircle(contours, Center, Radius);
+		//circle(gray_image, Center, Radius, Scalar(255), 2);
+	}
+
+	namedWindow("detected circles", CV_NORMAL);
+	imshow("detected circles", gray_image);
+
+
+	img2 = gray_image.clone();
+
+	GaussianBlur(img2, img2, Size(9, 9), 2, 2);
+	threshold(img2, img3, 50, 250, THRESH_BINARY);  //图像二值化，，
+	namedWindow("detecte circles", CV_NORMAL);
+	imshow("detecte circles", img3);
+	Canny(img3, img3, 50, 100);//边缘检测
+	namedWindow("detect circles", CV_NORMAL);
+	imshow("detect circles", img3);
+	findContours(img3, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);//查找出所有的圆边界
+
+
+	
+	
+	//标准圆在图片上一般是椭圆，所以采用OpenCV中拟合椭圆的方法求解中心
+	Mat pointsf;
+	Mat(contours[0]).convertTo(pointsf, CV_32F);
+	RotatedRect box = fitEllipse(pointsf);
+
+	string strx = to_string(box.center.x);
+	string stry = to_string(box.center.y);
+	strx = "x= " + strx + "\n";
+	stry = "y= " + stry + "\n";
+	ui->log->insertPlainText(strx.c_str());
+	ui->log->insertPlainText(stry.c_str());
+
+
+	waitKey();
+//	displayResult();
+}
+
+/*
+image = imageCopy.clone();
+cvtColor(image, gray_image, CV_BGR2GRAY);
+NG = false;
+
+img2 = gray_image.clone();
+
+GaussianBlur(img2, img2, Size(9, 9), 2, 2);
+threshold(img2, img3, 80, 255, THRESH_BINARY);  //图像二值化，，注意阈值变化
+namedWindow("detecte circles", CV_NORMAL);
+imshow("detecte circles", img3);
+Canny(img3, img3, 50, 100);//边缘检测
+namedWindow("detect circles", CV_NORMAL);
+imshow("detect circles", img3);
+vector<vector<Point>>contours;
+vector<Vec4i>hierarchy;
+findContours(img3, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);//查找出所有的圆边界
+int index = 0;
+for (; index >= 0; index = hierarchy[index][0])
+{
+	Scalar color(rand() & 255, rand() & 255, rand() & 255);
+	drawContours(gray_image, contours, index, color, CV_FILLED, 8, hierarchy);
+}
+
+namedWindow("detected circles", CV_NORMAL);
+imshow("detected circles", gray_image);
+//标准圆在图片上一般是椭圆，所以采用OpenCV中拟合椭圆的方法求解中心
+Mat pointsf;
+Mat(contours[0]).convertTo(pointsf, CV_32F);
+RotatedRect box = fitEllipse(pointsf);
+//	cout << box.center;
+string strx = to_string(box.center.x);
+string stry = to_string(box.center.y);
+strx = "x= " + strx + "\n";
+stry = "y= " + stry + "\n";
+ui->log->insertPlainText(strx.c_str());
+ui->log->insertPlainText(stry.c_str());
+
+
+waitKey();
+displayResult();
+
+
+//	GaussianBlur(edges, edges, Size(7, 7), 2, 2);
+namedWindow("Hough circles", CV_NORMAL);
+imshow("Hough circles", edges);
+vector<Vec3f> circles;
+//	CvMemStorage* circles = cvCreateMemStorage(0);
+//霍夫圆
+HoughCircles(edges, circles, CV_HOUGH_GRADIENT, 1, 18, 100,100, 0, 0);
+for (size_t i = 0; i < circles.size(); i++)
+{
+Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
+int radius = cvRound(circles[i][2]);
+//绘制圆心
+circle(gray_image, center, 3, Scalar(0, 255, 0), -1, 8, 0);
+//绘制圆轮廓
+circle(gray_image, center, radius, Scalar(155, 50, 255), 3, 8, 0);
+}
+
+
+*/
