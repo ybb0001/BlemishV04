@@ -97,6 +97,8 @@ public:
     QPushButton *BlemishCheck2;
     QPushButton *pushButton_BlemishCheckNew;
     QTextBrowser *log;
+    QPushButton *pushButton_OC;
+    QPushButton *pushButton_clear;
 
     void setupUi(QWidget *BlemishV04)
     {
@@ -115,7 +117,7 @@ public:
         pushButton_image_processing = new QPushButton(BlemishV04);
         pushButton_image_processing->setObjectName(QStringLiteral("pushButton_image_processing"));
         pushButton_image_processing->setEnabled(false);
-        pushButton_image_processing->setGeometry(QRect(740, 640, 100, 30));
+        pushButton_image_processing->setGeometry(QRect(740, 630, 100, 30));
         pushButton_image_processing_2 = new QPushButton(BlemishV04);
         pushButton_image_processing_2->setObjectName(QStringLiteral("pushButton_image_processing_2"));
         pushButton_image_processing_2->setEnabled(false);
@@ -272,8 +274,6 @@ public:
         blemishMode->setObjectName(QStringLiteral("blemishMode"));
         blemishMode->setGeometry(QRect(30, 455, 90, 20));
         blemishMode->setChecked(true);
-        Size1_A_Spec->raise();
-        blemishMode->raise();
         label_17 = new QLabel(BlemishV04);
         label_17->setObjectName(QStringLiteral("label_17"));
         label_17->setGeometry(QRect(860, 200, 61, 28));
@@ -345,14 +345,22 @@ public:
         BlemishCheck2 = new QPushButton(BlemishV04);
         BlemishCheck2->setObjectName(QStringLiteral("BlemishCheck2"));
         BlemishCheck2->setEnabled(false);
-        BlemishCheck2->setGeometry(QRect(740, 680, 100, 30));
+        BlemishCheck2->setGeometry(QRect(740, 660, 100, 30));
         pushButton_BlemishCheckNew = new QPushButton(BlemishV04);
         pushButton_BlemishCheckNew->setObjectName(QStringLiteral("pushButton_BlemishCheckNew"));
         pushButton_BlemishCheckNew->setEnabled(false);
-        pushButton_BlemishCheckNew->setGeometry(QRect(740, 720, 100, 30));
+        pushButton_BlemishCheckNew->setGeometry(QRect(740, 700, 100, 30));
         log = new QTextBrowser(BlemishV04);
         log->setObjectName(QStringLiteral("log"));
         log->setGeometry(QRect(470, 620, 261, 141));
+        pushButton_OC = new QPushButton(BlemishV04);
+        pushButton_OC->setObjectName(QStringLiteral("pushButton_OC"));
+        pushButton_OC->setEnabled(false);
+        pushButton_OC->setGeometry(QRect(740, 730, 100, 30));
+        pushButton_clear = new QPushButton(BlemishV04);
+        pushButton_clear->setObjectName(QStringLiteral("pushButton_clear"));
+        pushButton_clear->setEnabled(true);
+        pushButton_clear->setGeometry(QRect(670, 730, 61, 30));
         groupBox->raise();
         groupBox_2->raise();
         pushButton_open_image->raise();
@@ -414,6 +422,8 @@ public:
         BlemishCheck2->raise();
         pushButton_BlemishCheckNew->raise();
         log->raise();
+        pushButton_OC->raise();
+        pushButton_clear->raise();
 
         retranslateUi(BlemishV04);
 
@@ -635,6 +645,8 @@ public:
         saveGray->setText(QApplication::translate("BlemishV04", "Save Gray", Q_NULLPTR));
         BlemishCheck2->setText(QApplication::translate("BlemishV04", "\345\274\202\347\211\251\346\265\213\350\257\225Size2", Q_NULLPTR));
         pushButton_BlemishCheckNew->setText(QApplication::translate("BlemishV04", "\345\274\202\347\211\251\346\226\260\347\256\227\346\263\225", Q_NULLPTR));
+        pushButton_OC->setText(QApplication::translate("BlemishV04", "OC Test", Q_NULLPTR));
+        pushButton_clear->setText(QApplication::translate("BlemishV04", "Clear", Q_NULLPTR));
     } // retranslateUi
 
 };

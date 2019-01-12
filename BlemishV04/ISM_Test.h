@@ -7,4 +7,6 @@
 using namespace cv;
 using namespace std;
 
-Point3i OC(Mat img);
+Point2i OC(Mat img);
+
+float Trapezoid_Average(Mat img, Point2i out_left, Point2i out_right, Point2i in_left, Point2i in_right);

@@ -37,6 +37,10 @@ public:
 	void on_pushButton_image_processing_2_clicked();
 	void on_pushButton_blemishcheck2_clicked();
 	void on_pushButton_BlemishCheckNew_clicked();
+	void on_pushButton_OC_clicked();
+	void on_pushButton_clear_clicked();
+
+
 	void saveGrayImage_clicked();
 	void drawDefectRect(int i,int j, int mode);
 	void drawDefectCircle(int i, int j, int b, int g, int r);

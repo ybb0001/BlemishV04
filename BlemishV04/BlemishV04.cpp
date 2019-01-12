@@ -34,6 +34,16 @@ int knownDefectCnt = 0;
 int WBcnt = 0;
 int Region_A = 60, Region_B = 80, Region_C = 100;
 float nowTh = 0;
+//  1-3  4-7  8-15  16-31  32-63  64-128
+//    4   16    64    128    256    512
+
+typedef struct {
+	int sum, cnt;
+	float avg;
+
+}New_Blemish_ROI;
+
+New_Blemish_ROI Blemish_ROI[128][1024];
 
 int leftValue, rightValue;
 
@@ -375,6 +385,7 @@ void BlemishV04::on_pushButton_open_image_clicked()
 		ui->BlemishCheck2->setEnabled(true);
 		ui->saveGray->setEnabled(true);
 		ui->pushButton_BlemishCheckNew->setEnabled(true);
+		ui->pushButton_OC->setEnabled(true);
 
 		imgScaled = showImage.scaled(ui->label_show_image->size(), Qt::KeepAspectRatio);
 		//imgScaled = showImage.scaledToHeight(600, Qt::FastTransformation);
@@ -1061,12 +1072,10 @@ void BlemishV04::on_pushButton_image_processing_2_clicked() {
 }
 
 
-
-void BlemishV04::on_pushButton_BlemishCheckNew_clicked() {
+void BlemishV04::on_pushButton_OC_clicked() {
 
 	cvtColor(imageCopy, gray_image, CV_BGR2GRAY);
-	NG = false;
-	Point3i Center = OC(gray_image);
+	Point2i Center = OC(gray_image);
 
 	string strx = to_string(Center.x);
 	string stry = to_string(Center.y);
@@ -1074,6 +1083,146 @@ void BlemishV04::on_pushButton_BlemishCheckNew_clicked() {
 	stry = "y= " + stry + "\n";
 	ui->log->insertPlainText(strx.c_str());
 	ui->log->insertPlainText(stry.c_str());
+
+	strx = to_string(Center.x-gray_image.cols/2);
+	stry = to_string(Center.y-gray_image.rows/2);
+	strx = "OC_X= " + strx + "\n";
+	stry = "OC_Y= " + stry + "\n";
+	ui->log->insertPlainText(strx.c_str());
+	ui->log->insertPlainText(stry.c_str());
+	ui->log->insertPlainText("~~~~~~~~~~~~~~~~~~~~\n");
+
+}
+
+void BlemishV04::on_pushButton_clear_clicked() {
+
+	ui->log->clear();
+
+}
+
+
+void BlemishV04::on_pushButton_BlemishCheckNew_clicked() {
+
+//	nowTh = atof(bth[0][0].c_str());
+	nowTh = 0.005;
+
+	cvtColor(imageCopy, gray_image, CV_BGR2GRAY);
+	NG = false;
+	Point2i Center = OC(gray_image);
+
+	
+
+	int cx = Center.x;
+	int cy = Center.y;
+	float dis;
+
+	//  1 2-3  4-7  8-15  16-31  32-63  64-128
+	//  4   4   16    64    128    256    512
+	//    0    1     2    4      8     16
+
+	memset(Blemish_ROI, 0, sizeof(Blemish_ROI));
+	int max_dis = 0;
+	for (int i = 0; i < gray_image.rows; i++)
+	{
+		uchar* inData = gray_image.ptr<uchar>(i);
+		for (int j = 0; j < gray_image.cols; j++) {
+
+			int px = j - cx;
+			int py = cy - i;
+			if (px == 0 || py == 0)
+				continue;
+
+			dis = sqrt(px*px + py*py);
+			int dis_index = dis / 32;
+			if (dis_index > max_dis)
+				max_dis = dis_index;
+			int divide = 4;
+
+		/*	if (dis_index >= 64)
+				divide = 512;
+			else */
+				if (dis_index >= 32)
+				divide = 256;
+			else if (dis_index >= 16)
+				divide = 128;
+			else if (dis_index >= 8)
+				divide = 64;
+			else if (dis_index >= 4)
+				divide = 16;
+
+			float angle = atan2(py, px);
+			int angle_index = (angle + CV_PI) / (2 * CV_PI / divide);
+	/*		if (py == 0){
+				if(px>0)
+				angle_index = divide - 1;
+			}*/
+			Blemish_ROI[dis_index][angle_index].sum += inData[j];
+			Blemish_ROI[dis_index][angle_index].cnt++;
+		}
+	}
+
+	for (int k = 0; k <= max_dis; k++) {
+
+		float tsum = 0;
+		int divide = 4;
+	/*	if (k >= 64)
+			divide = 512;
+		else */
+			if (k >= 32)
+			divide = 256;
+		else if (k >= 16)
+			divide = 128;
+		else if (k >= 8)
+			divide = 64;
+		else if (k >= 4)
+			divide = 16;
+
+		int cnt = 0;
+		for (int i = 0; i < divide; i++) {
+			if (Blemish_ROI[k][i].cnt>=128) {
+				Blemish_ROI[k][i].avg = (float)Blemish_ROI[k][i].sum / Blemish_ROI[k][i].cnt;
+				tsum += Blemish_ROI[k][i].avg;	
+				cnt++;
+			}
+		}
+		float avg = (float)tsum / cnt;
+
+		for (int i = 0; i < divide; i++) {
+			if (Blemish_ROI[k][i].cnt>128) {
+				float total_gap = abs((Blemish_ROI[k][i].avg-avg)/avg);
+				int next = i + 1;
+				while (Blemish_ROI[k][next].cnt<128&& next<divide)
+					next++;
+				if (next >= divide)
+					next = 0;
+				float next_gap = abs((Blemish_ROI[k][i].avg - Blemish_ROI[k][next].avg) / avg);
+
+				if (k >= 50)
+					nowTh *= 1.5;
+
+				if (total_gap > nowTh && next_gap>nowTh) {
+
+					NG = true;
+					int r = 32 * k;
+					float angle = 2*CV_PI / divide * i - CV_PI;
+	
+					int x = r*cos(angle);
+					int y = r*sin(angle);
+							
+					circle(image, Point(x+cx, y+cy), 64, Scalar(0, 0, 255), 12, 8, 0);
+
+				}		
+			}
+		}
+	}
+
+
+	cv::cvtColor(image, temp_image, CV_BGR2RGB);
+	QImage showImage((const uchar*)temp_image.data, temp_image.cols, temp_image.rows, temp_image.cols*temp_image.channels(), QImage::Format_RGB888);
+	imgScaled = showImage.scaled(ui->label_show_image->size(), Qt::KeepAspectRatio);
+	ui->label_show_image->setPixmap(QPixmap::fromImage(imgScaled));
+
+	
 
 }
 
