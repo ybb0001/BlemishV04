@@ -386,6 +386,7 @@ void BlemishV04::on_pushButton_open_image_clicked()
 		ui->saveGray->setEnabled(true);
 		ui->pushButton_BlemishCheckNew->setEnabled(true);
 		ui->pushButton_OC->setEnabled(true);
+		ui->pushButton_circle_Detect->setEnabled(true);
 
 		imgScaled = showImage.scaled(ui->label_show_image->size(), Qt::KeepAspectRatio);
 		//imgScaled = showImage.scaledToHeight(600, Qt::FastTransformation);
@@ -1232,19 +1233,17 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 	cvtColor(image, gray_image, CV_BGR2GRAY);
 	NG = false;
 
-	img2 = gray_image.clone();
+		img2 = gray_image.clone();
 
-	GaussianBlur(img2, img2, Size(9, 9), 2, 2);
-	threshold(img2, img3, 140, 220, THRESH_BINARY);  //图像二值化，，
-//	namedWindow("detecte circles", CV_NORMAL);
-//	imshow("detecte circles", img3);
-	Canny(img3, img3, 50, 100);//边缘检测
-//	namedWindow("detect circles", CV_NORMAL);
-//	imshow("detect circles", img3);
+		GaussianBlur(img2, img2, Size(9, 9), 2, 2);
+		threshold(img2, img3, 150, 220, THRESH_BINARY);  //图像二值化，
 
-
-
-
+		namedWindow("detecte circles1", CV_NORMAL);
+		imshow("detecte circles1", img3);
+		
+		Canny(img3, img3, 50, 100);//边缘检测
+	//	namedWindow("detect circles2", CV_NORMAL);
+	//	imshow("detect circles2", img3);
 
 	vector<vector<Point>>contours;
 	vector<Vec4i>hierarchy;
@@ -1264,27 +1263,38 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 		//circle(gray_image, Center, Radius, Scalar(255), 2);
 	}
 
-	namedWindow("detected circles", CV_NORMAL);
-	imshow("detected circles", gray_image);
-
+	namedWindow("detected circles3", CV_NORMAL);
+	imshow("detected circles3", gray_image);
 
 	img2 = gray_image.clone();
 
 	GaussianBlur(img2, img2, Size(9, 9), 2, 2);
-	threshold(img2, img3, 50, 250, THRESH_BINARY);  //图像二值化，，
-	namedWindow("detecte circles", CV_NORMAL);
-	imshow("detecte circles", img3);
+	threshold(img2, img3, 20, 250, THRESH_BINARY);  //图像二值化，，
+
+//	namedWindow("detecte circles4", CV_NORMAL);
+//	imshow("detecte circles4", img3);
 	Canny(img3, img3, 50, 100);//边缘检测
-	namedWindow("detect circles", CV_NORMAL);
-	imshow("detect circles", img3);
+//	namedWindow("detect circles5", CV_NORMAL);
+//	imshow("detect circles5", img3);
+
 	findContours(img3, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);//查找出所有的圆边界
 
+	vector<Point> Circle_edge;
 
-	
+	for (int i = 0; i < contours.size(); i++) {
+		vector<Point> ::iterator start = contours[i].begin();
+		while (start != contours[i].end()){
+			Circle_edge.push_back(*start);
+			++start;
+		}
+	}
+
 	
 	//标准圆在图片上一般是椭圆，所以采用OpenCV中拟合椭圆的方法求解中心
 	Mat pointsf;
-	Mat(contours[0]).convertTo(pointsf, CV_32F);
+//	Mat(contours[0]).convertTo(pointsf, CV_32F);
+	Mat(Circle_edge).convertTo(pointsf, CV_32F);
+
 	RotatedRect box = fitEllipse(pointsf);
 
 	string strx = to_string(box.center.x);
@@ -1294,9 +1304,15 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 	ui->log->insertPlainText(strx.c_str());
 	ui->log->insertPlainText(stry.c_str());
 
+	strx = to_string(box.center.x - gray_image.cols / 2);
+	stry = to_string(box.center.y - gray_image.rows / 2);
+	strx = "OC_X= " + strx + "\n";
+	stry = "OC_Y= " + stry + "\n";
+	ui->log->insertPlainText(strx.c_str());
+	ui->log->insertPlainText(stry.c_str());
+	ui->log->insertPlainText("~~~~~~~~~~~~~~~~~~~~\n");
 
-	waitKey();
-//	displayResult();
+
 }
 
 /*
@@ -1360,4 +1376,23 @@ circle(gray_image, center, radius, Scalar(155, 50, 255), 3, 8, 0);
 }
 
 
+*/
+
+/*
+Mat img4 = img3.clone();
+vector<Vec3f> circles;
+//霍夫圆
+HoughCircles(img4, circles, CV_HOUGH_GRADIENT, 1.5, 8000, 200, 50, 1200, 1560);
+for (size_t i = 0; i < circles.size(); i++)
+{
+Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
+int radius = cvRound(circles[i][2]);
+//绘制圆心
+circle(img4, center, 3, Scalar(0, 255, 0), -1, 8, 0);
+//绘制圆轮廓
+circle(img4, center, radius, Scalar(155, 50, 255), 3, 8, 0);
+}
+
+namedWindow("【效果图】", CV_NORMAL);
+imshow("【效果图】", img4);
 */

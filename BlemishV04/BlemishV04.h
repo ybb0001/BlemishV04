@@ -39,6 +39,7 @@ public:
 	void on_pushButton_BlemishCheckNew_clicked();
 	void on_pushButton_OC_clicked();
 	void on_pushButton_clear_clicked();
+	void on_pushButton_circle_Detect_clicked();
 
 
 	void saveGrayImage_clicked();
@@ -49,8 +50,6 @@ public:
 	void blemishModeCheck(int mode);
 	void displayResult();
 
-
-	void on_pushButton_circle_Detect_clicked();
 
 private:
 	Ui::BlemishV04 *ui;

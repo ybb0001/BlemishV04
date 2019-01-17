@@ -55,7 +55,7 @@
    <property name="geometry">
     <rect>
      <x>740</x>
-     <y>630</y>
+     <y>620</y>
      <width>100</width>
      <height>30</height>
     </rect>
@@ -1142,7 +1142,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>740</x>
-     <y>660</y>
+     <y>650</y>
      <width>100</width>
      <height>30</height>
     </rect>
@@ -1158,7 +1158,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>740</x>
-     <y>700</y>
+     <y>680</y>
      <width>100</width>
      <height>30</height>
     </rect>
@@ -1184,7 +1184,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>740</x>
-     <y>730</y>
+     <y>710</y>
      <width>100</width>
      <height>30</height>
     </rect>
@@ -1207,6 +1207,22 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>Clear</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_circle_Detect">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>740</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Circle CHK</string>
    </property>
   </widget>
   <zorder>groupBox</zorder>
@@ -1272,6 +1288,7 @@ p, li { white-space: pre-wrap; }
   <zorder>log</zorder>
   <zorder>pushButton_OC</zorder>
   <zorder>pushButton_clear</zorder>
+  <zorder>pushButton_circle_Detect</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
