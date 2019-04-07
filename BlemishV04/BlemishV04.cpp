@@ -1105,14 +1105,13 @@ void BlemishV04::on_pushButton_clear_clicked() {
 void BlemishV04::on_pushButton_BlemishCheckNew_clicked() {
 
 //	nowTh = atof(bth[0][0].c_str());
-	nowTh = 0.005;
+	nowTh = 0.009;
 
 	cvtColor(imageCopy, gray_image, CV_BGR2GRAY);
 	NG = false;
-	Point2i Center = OC(gray_image);
-
+//	Point2i Center = OC(gray_image);
+	Point2i Center = Circle_Detect(gray_image,0.75);
 	
-
 	int cx = Center.x;
 	int cy = Center.y;
 	float dis;
@@ -1223,32 +1222,35 @@ void BlemishV04::on_pushButton_BlemishCheckNew_clicked() {
 	imgScaled = showImage.scaled(ui->label_show_image->size(), Qt::KeepAspectRatio);
 	ui->label_show_image->setPixmap(QPixmap::fromImage(imgScaled));
 
-	
+	displayResult();
 
 }
 
+
 void BlemishV04::on_pushButton_circle_Detect_clicked() {
+
 
 	image = imageCopy.clone();
 	cvtColor(image, gray_image, CV_BGR2GRAY);
 	NG = false;
+	unsigned char bv = BV(gray_image);
 
-		img2 = gray_image.clone();
+	img2 = gray_image.clone();
+	GaussianBlur(img2, img2, Size(9, 9), 2, 2);
+//	threshold(img2, img3, 150, 220, THRESH_BINARY);  //图像二值化，
+	threshold(img2, img3, bv*0.87, 220, THRESH_BINARY);  //图像二值化，
 
-		GaussianBlur(img2, img2, Size(9, 9), 2, 2);
-		threshold(img2, img3, 150, 220, THRESH_BINARY);  //图像二值化，
+	namedWindow("detecte circles1", CV_NORMAL);
+	imshow("detecte circles1", img3);
 
-		namedWindow("detecte circles1", CV_NORMAL);
-		imshow("detecte circles1", img3);
-		
-		Canny(img3, img3, 50, 100);//边缘检测
+	Canny(img3, img3, 50, 100);//边缘检测
 	//	namedWindow("detect circles2", CV_NORMAL);
 	//	imshow("detect circles2", img3);
 
 	vector<vector<Point>>contours;
 	vector<Vec4i>hierarchy;
 	findContours(img3, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);//查找出所有的圆边界
-	
+/*	
 	int index = 0;
 	for (; index >= 0; index = hierarchy[index][0])
 	{
@@ -1279,6 +1281,7 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 
 	findContours(img3, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);//查找出所有的圆边界
 
+*/
 	vector<Point> Circle_edge;
 
 	for (int i = 0; i < contours.size(); i++) {
@@ -1314,6 +1317,10 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 
 
 }
+
+
+
+
 
 /*
 image = imageCopy.clone();
@@ -1377,6 +1384,7 @@ circle(gray_image, center, radius, Scalar(155, 50, 255), 3, 8, 0);
 
 
 */
+
 
 /*
 Mat img4 = img3.clone();

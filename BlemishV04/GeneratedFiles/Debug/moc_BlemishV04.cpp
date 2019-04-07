@@ -44,29 +44,29 @@ QT_MOC_LITERAL(9, 186, 35), // "on_pushButton_blemishcheck2_c..."
 QT_MOC_LITERAL(10, 222, 37), // "on_pushButton_BlemishCheckNew..."
 QT_MOC_LITERAL(11, 260, 24), // "on_pushButton_OC_clicked"
 QT_MOC_LITERAL(12, 285, 27), // "on_pushButton_clear_clicked"
-QT_MOC_LITERAL(13, 313, 21), // "saveGrayImage_clicked"
-QT_MOC_LITERAL(14, 335, 14), // "drawDefectRect"
-QT_MOC_LITERAL(15, 350, 1), // "i"
-QT_MOC_LITERAL(16, 352, 1), // "j"
-QT_MOC_LITERAL(17, 354, 4), // "mode"
-QT_MOC_LITERAL(18, 359, 16), // "drawDefectCircle"
-QT_MOC_LITERAL(19, 376, 1), // "b"
-QT_MOC_LITERAL(20, 378, 1), // "g"
-QT_MOC_LITERAL(21, 380, 1), // "r"
-QT_MOC_LITERAL(22, 382, 10), // "WBdotCheck"
-QT_MOC_LITERAL(23, 393, 1), // "x"
-QT_MOC_LITERAL(24, 395, 1), // "y"
-QT_MOC_LITERAL(25, 397, 5), // "width"
-QT_MOC_LITERAL(26, 403, 6), // "height"
-QT_MOC_LITERAL(27, 410, 4), // "area"
-QT_MOC_LITERAL(28, 415, 17), // "blemishBlockCheck"
-QT_MOC_LITERAL(29, 433, 15), // "float[300][300]"
-QT_MOC_LITERAL(30, 449, 3), // "map"
-QT_MOC_LITERAL(31, 453, 2), // "Mx"
-QT_MOC_LITERAL(32, 456, 2), // "My"
-QT_MOC_LITERAL(33, 459, 16), // "blemishModeCheck"
-QT_MOC_LITERAL(34, 476, 13), // "displayResult"
-QT_MOC_LITERAL(35, 490, 35) // "on_pushButton_circle_Detect_c..."
+QT_MOC_LITERAL(13, 313, 35), // "on_pushButton_circle_Detect_c..."
+QT_MOC_LITERAL(14, 349, 21), // "saveGrayImage_clicked"
+QT_MOC_LITERAL(15, 371, 14), // "drawDefectRect"
+QT_MOC_LITERAL(16, 386, 1), // "i"
+QT_MOC_LITERAL(17, 388, 1), // "j"
+QT_MOC_LITERAL(18, 390, 4), // "mode"
+QT_MOC_LITERAL(19, 395, 16), // "drawDefectCircle"
+QT_MOC_LITERAL(20, 412, 1), // "b"
+QT_MOC_LITERAL(21, 414, 1), // "g"
+QT_MOC_LITERAL(22, 416, 1), // "r"
+QT_MOC_LITERAL(23, 418, 10), // "WBdotCheck"
+QT_MOC_LITERAL(24, 429, 1), // "x"
+QT_MOC_LITERAL(25, 431, 1), // "y"
+QT_MOC_LITERAL(26, 433, 5), // "width"
+QT_MOC_LITERAL(27, 439, 6), // "height"
+QT_MOC_LITERAL(28, 446, 4), // "area"
+QT_MOC_LITERAL(29, 451, 17), // "blemishBlockCheck"
+QT_MOC_LITERAL(30, 469, 15), // "float[300][300]"
+QT_MOC_LITERAL(31, 485, 3), // "map"
+QT_MOC_LITERAL(32, 489, 2), // "Mx"
+QT_MOC_LITERAL(33, 492, 2), // "My"
+QT_MOC_LITERAL(34, 495, 16), // "blemishModeCheck"
+QT_MOC_LITERAL(35, 512, 13) // "displayResult"
 
     },
     "BlemishV04\0loadParameter\0\0readWBValue\0"
@@ -78,12 +78,12 @@ QT_MOC_LITERAL(35, 490, 35) // "on_pushButton_circle_Detect_c..."
     "on_pushButton_BlemishCheckNew_clicked\0"
     "on_pushButton_OC_clicked\0"
     "on_pushButton_clear_clicked\0"
+    "on_pushButton_circle_Detect_clicked\0"
     "saveGrayImage_clicked\0drawDefectRect\0"
     "i\0j\0mode\0drawDefectCircle\0b\0g\0r\0"
     "WBdotCheck\0x\0y\0width\0height\0area\0"
     "blemishBlockCheck\0float[300][300]\0map\0"
-    "Mx\0My\0blemishModeCheck\0displayResult\0"
-    "on_pushButton_circle_Detect_clicked"
+    "Mx\0My\0blemishModeCheck\0displayResult"
 };
 #undef QT_MOC_LITERAL
 
@@ -113,12 +113,12 @@ static const uint qt_meta_data_BlemishV04[] = {
       11,    0,  118,    2, 0x0a /* Public */,
       12,    0,  119,    2, 0x0a /* Public */,
       13,    0,  120,    2, 0x0a /* Public */,
-      14,    3,  121,    2, 0x0a /* Public */,
-      18,    5,  128,    2, 0x0a /* Public */,
-      22,    5,  139,    2, 0x0a /* Public */,
-      28,    7,  150,    2, 0x0a /* Public */,
-      33,    1,  165,    2, 0x0a /* Public */,
-      34,    0,  168,    2, 0x0a /* Public */,
+      14,    0,  121,    2, 0x0a /* Public */,
+      15,    3,  122,    2, 0x0a /* Public */,
+      19,    5,  129,    2, 0x0a /* Public */,
+      23,    5,  140,    2, 0x0a /* Public */,
+      29,    7,  151,    2, 0x0a /* Public */,
+      34,    1,  166,    2, 0x0a /* Public */,
       35,    0,  169,    2, 0x0a /* Public */,
 
  // slots: parameters
@@ -134,12 +134,12 @@ static const uint qt_meta_data_BlemishV04[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,   15,   16,   17,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   15,   16,   19,   20,   21,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   23,   24,   25,   26,   27,
-    QMetaType::Void, 0x80000000 | 29, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   30,   27,   16,   15,   17,   31,   32,
-    QMetaType::Void, QMetaType::Int,   17,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,   16,   17,   18,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   16,   17,   20,   21,   22,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   24,   25,   26,   27,   28,
+    QMetaType::Void, 0x80000000 | 30, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   31,   28,   17,   16,   18,   32,   33,
+    QMetaType::Void, QMetaType::Int,   18,
     QMetaType::Void,
 
        0        // eod
@@ -163,14 +163,14 @@ void BlemishV04::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 8: _t->on_pushButton_BlemishCheckNew_clicked(); break;
         case 9: _t->on_pushButton_OC_clicked(); break;
         case 10: _t->on_pushButton_clear_clicked(); break;
-        case 11: _t->saveGrayImage_clicked(); break;
-        case 12: _t->drawDefectRect((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
-        case 13: _t->drawDefectCircle((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5]))); break;
-        case 14: _t->WBdotCheck((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5]))); break;
-        case 15: _t->blemishBlockCheck((*reinterpret_cast< float(*)[300][300]>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< int(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7]))); break;
-        case 16: _t->blemishModeCheck((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 17: _t->displayResult(); break;
-        case 18: _t->on_pushButton_circle_Detect_clicked(); break;
+        case 11: _t->on_pushButton_circle_Detect_clicked(); break;
+        case 12: _t->saveGrayImage_clicked(); break;
+        case 13: _t->drawDefectRect((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 14: _t->drawDefectCircle((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5]))); break;
+        case 15: _t->WBdotCheck((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5]))); break;
+        case 16: _t->blemishBlockCheck((*reinterpret_cast< float(*)[300][300]>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< int(*)>(_a[6])),(*reinterpret_cast< int(*)>(_a[7]))); break;
+        case 17: _t->blemishModeCheck((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 18: _t->displayResult(); break;
         default: ;
         }
     }

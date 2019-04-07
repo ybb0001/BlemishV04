@@ -1,1 +1,21 @@
-﻿  BlemishV04.vcxproj -> D:\Documents\Visual Studio 2015\Projects\BlemishV04\Win32\Release\BlemishV04.exe
+﻿生成启动时间为 2019/1/13 20:50:52。
+     1>项目“G:\Visual Studio 2015\Projects\BlemishV04\BlemishV04\BlemishV04.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I.\GeneratedFiles /I. /IG:\Plug_in\QT\5.8\msvc2015\include /I.\GeneratedFiles\Release /IG:\Plug_in\QT\5.8\msvc2015\include\QtCore /IG:\Plug_in\QT\5.8\msvc2015\include\QtGui /IG:\Plug_in\QT\5.8\msvc2015\include\QtANGLE /IG:\Plug_in\QT\5.8\msvc2015\include\QtWidgets /nologo /W1 /WX- /MP /O2 /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_NO_DEBUG /D NDEBUG /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /D _AFXDLL /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt BlemishV04.cpp main.cpp .\GeneratedFiles\Release\moc_BlemishV04.cpp
+         BlemishV04.cpp
+         main.cpp
+         moc_BlemishV04.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+     1>g:\visual studio 2015\projects\blemishv04\blemishv04\BlemishV04.h(54): error C2535: “void BlemishV04::on_pushButton_circle_Detect_clicked(void)”: 已经定义或声明成员函数 (编译源文件 BlemishV04.cpp)
+         g:\visual studio 2015\projects\blemishv04\blemishv04\BlemishV04.h(42): note: 参见“BlemishV04::on_pushButton_circle_Detect_clicked”的声明 (编译源文件 BlemishV04.cpp)
+     1>g:\visual studio 2015\projects\blemishv04\blemishv04\BlemishV04.h(54): error C2535: “void BlemishV04::on_pushButton_circle_Detect_clicked(void)”: 已经定义或声明成员函数 (编译源文件 .\GeneratedFiles\Release\moc_BlemishV04.cpp)
+         g:\visual studio 2015\projects\blemishv04\blemishv04\BlemishV04.h(42): note: 参见“BlemishV04::on_pushButton_circle_Detect_clicked”的声明 (编译源文件 .\GeneratedFiles\Release\moc_BlemishV04.cpp)
+     1>g:\visual studio 2015\projects\blemishv04\blemishv04\BlemishV04.h(54): error C2535: “void BlemishV04::on_pushButton_circle_Detect_clicked(void)”: 已经定义或声明成员函数 (编译源文件 main.cpp)
+         g:\visual studio 2015\projects\blemishv04\blemishv04\BlemishV04.h(42): note: 参见“BlemishV04::on_pushButton_circle_Detect_clicked”的声明 (编译源文件 main.cpp)
+     1>已完成生成项目“G:\Visual Studio 2015\Projects\BlemishV04\BlemishV04\BlemishV04.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:03.18
