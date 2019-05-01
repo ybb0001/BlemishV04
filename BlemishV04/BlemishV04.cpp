@@ -10,6 +10,7 @@
 #include<iostream>     
 #include<fstream>   
 #include<math.h>
+#include<LargeBlemish.h>
 
 #define MaxDefect 50
 #define MaxDefectSize 512
@@ -44,6 +45,10 @@ typedef struct {
 }New_Blemish_ROI;
 
 New_Blemish_ROI Blemish_ROI[128][1024];
+
+SigmaInfo Semco_Blemish_Spec[5];
+BlemishResult blemishResult;
+int LB_No=0;
 
 int leftValue, rightValue;
 
@@ -114,6 +119,8 @@ bool BlemishV04::loadParameter() {
 	bth[1][1] = string((const char *)ui->Size2_B_Spec->document()->toPlainText().toLocal8Bit());
 	bth[1][2] = string((const char *)ui->Size2_C_Spec->document()->toPlainText().toLocal8Bit());
 	bth[1][3] = string((const char *)ui->Size2_D_Spec->document()->toPlainText().toLocal8Bit());
+
+	LB_No= ui->LB_No->document()->toPlainText().toInt();
 
 	for (int x = 0; x < 4; x++) {
 		float thf = atof(th[x].c_str());
@@ -326,6 +333,8 @@ void BlemishV04::readBlemishValue() {
 	bSize[1].j = GetPrivateProfileInt(_T("Blemish_Size2"), TEXT("Size2_Width"), 24, TEXT(".\\specValue.ini"));
 	bSize[1].i = GetPrivateProfileInt(_T("Blemish_Size2"), TEXT("Size2_Height"), 21, TEXT(".\\specValue.ini"));
 
+
+
 }
 
 BlemishV04::BlemishV04(QWidget *parent) :
@@ -387,6 +396,7 @@ void BlemishV04::on_pushButton_open_image_clicked()
 		ui->pushButton_BlemishCheckNew->setEnabled(true);
 		ui->pushButton_OC->setEnabled(true);
 		ui->pushButton_circle_Detect->setEnabled(true);
+		ui->pushButton_HQ_Blemish->setEnabled(true);
 
 		imgScaled = showImage.scaled(ui->label_show_image->size(), Qt::KeepAspectRatio);
 		//imgScaled = showImage.scaledToHeight(600, Qt::FastTransformation);
@@ -1317,6 +1327,41 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 
 
 }
+
+
+
+
+void Load_Sensor_ini() {
+
+	string str_LB = "LARGEBLEMISH";
+	TCHAR lpTexts[9];
+	GetPrivateProfileString(TEXT("RegionSetup"), TEXT("in_Size"), TEXT("0.333"), lpTexts, 8, TEXT(".\\specValue.ini"));
+	in_Size = CT2A(lpTexts);
+
+
+	if (LB_No > 0) {
+		str_LB = str_LB + '_';
+		str_LB = str_LB + to_string(LB_No);
+	}
+
+}
+
+
+void BlemishV04::on_pushButton_HQ_Blemish_clicked() {
+
+	LB_No = ui->LB_No->document()->toPlainText().toInt();
+	//	LB_No = GetPrivateProfileInt(_T("Blemish_Size1"), TEXT("Size1_Width"), 48, TEXT(".\\Sensor.ini"));
+	Load_Sensor_ini();
+
+
+}
+
+
+
+
+
+
+
 
 
 

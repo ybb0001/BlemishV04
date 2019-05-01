@@ -1,9 +1,19 @@
-﻿生成启动时间为 2019/4/3 21:38:48。
+﻿生成启动时间为 2019/5/1 22:15:15。
      1>项目“G:\Visual Studio 2015\Projects\BlemishV04\BlemishV04\BlemishV04.vcxproj”在节点 2 上(Build 个目标)。
      1>QtRccSetDependencies:
          "G:\Plug_in\QT\5.8\msvc2015\bin\rcc.exe" --list "BlemishV04.qrc" > "Debug\rcc_list.txt" 2> nul
+       QtWork:
+         Uic'ing BlemishV04.ui...
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I.\GeneratedFiles /I. /IG:\Plug_in\QT\5.8\msvc2015\include /I.\GeneratedFiles\Debug /IG:\Plug_in\QT\5.8\msvc2015\include\QtCore /IG:\Plug_in\QT\5.8\msvc2015\include\QtGui /IG:\Plug_in\QT\5.8\msvc2015\include\QtANGLE /IG:\Plug_in\QT\5.8\msvc2015\include\QtWidgets /Zi /nologo /W1 /WX- /MP /Od /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /D _AFXDLL /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt BlemishV04.cpp GeneratedFiles\Debug\moc_BlemishV04.cpp main.cpp
+         BlemishV04.cpp
+         moc_BlemishV04.cpp
+         main.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Visual Studio 2015\Projects\BlemishV04\Win32\Debug\\BlemishV04.exe" /NOLOGO /LIBPATH:G:\Plug_in\QT\5.8\msvc2015\lib qtmaind.lib Qt5Cored.lib Qt5Guid.lib Qt5Widgetsd.lib opencv_calib3d2413d.lib opencv_contrib2413d.lib opencv_core2413d.lib opencv_features2d2413d.lib opencv_flann2413d.lib opencv_gpu2413d.lib opencv_highgui2413d.lib opencv_imgproc2413d.lib opencv_legacy2413d.lib opencv_ml2413d.lib opencv_nonfree2413d.lib opencv_objdetect2413d.lib opencv_ocl2413d.lib opencv_photo2413d.lib opencv_stitching2413d.lib opencv_superres2413d.lib opencv_ts2413d.lib opencv_video2413d.lib opencv_videostab2413d.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"G:\Visual Studio 2015\Projects\BlemishV04\Win32\Debug\BlemishV04.pdb" /SUBSYSTEM:WINDOWS /STACK:"1000000" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Visual Studio 2015\Projects\BlemishV04\Win32\Debug\BlemishV04.lib" /MACHINE:X86 /SAFESEH Debug\BlemishV04.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Visual Studio 2015\Projects\BlemishV04\Win32\Debug\\BlemishV04.exe" /NOLOGO /LIBPATH:G:\Plug_in\QT\5.8\msvc2015\lib qtmaind.lib Qt5Cored.lib Qt5Guid.lib Qt5Widgetsd.lib opencv_calib3d2413d.lib opencv_contrib2413d.lib opencv_core2413d.lib opencv_features2d2413d.lib opencv_flann2413d.lib opencv_gpu2413d.lib opencv_highgui2413d.lib opencv_imgproc2413d.lib opencv_legacy2413d.lib opencv_ml2413d.lib opencv_nonfree2413d.lib opencv_objdetect2413d.lib opencv_ocl2413d.lib opencv_photo2413d.lib opencv_stitching2413d.lib opencv_superres2413d.lib opencv_ts2413d.lib opencv_video2413d.lib opencv_videostab2413d.lib DetectLargeBlemish3.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"G:\Visual Studio 2015\Projects\BlemishV04\Win32\Debug\BlemishV04.pdb" /SUBSYSTEM:WINDOWS /STACK:"1000000" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Visual Studio 2015\Projects\BlemishV04\Win32\Debug\BlemishV04.lib" /MACHINE:X86 /SAFESEH Debug\BlemishV04.obj
          Debug\main.obj
          Debug\ISM_Test.obj
          Debug\qrc_BlemishV04.obj
@@ -13,4 +23,4 @@
 
 已成功生成。
 
-已用时间 00:00:01.48
+已用时间 00:00:10.84

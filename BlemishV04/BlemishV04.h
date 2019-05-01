@@ -40,6 +40,7 @@ public:
 	void on_pushButton_OC_clicked();
 	void on_pushButton_clear_clicked();
 	void on_pushButton_circle_Detect_clicked();
+	void on_pushButton_HQ_Blemish_clicked();
 
 
 	void saveGrayImage_clicked();
