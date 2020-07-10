@@ -42,19 +42,22 @@ public:
 	void on_pushButton_circle_Detect_clicked();
 	void on_pushButton_HQ_Blemish_clicked();
 
+	void on_saveDisplay_clicked();
+	void on_saveGrayImage_clicked();
 
-	void saveGrayImage_clicked();
 	void drawDefectRect(int i,int j, int mode);
 	void drawDefectCircle(int i, int j, int b, int g, int r);
 	void WBdotCheck(int x, int y, int width, int height,int area);
 	void blemishBlockCheck(float map[300][300], int area, int j, int i, int mode,int Mx, int My);
 	void blemishModeCheck(int mode);
 	void displayResult();
+	void display_Image();
+	void DisplayOutput();
 
 
 private:
 	Ui::BlemishV04 *ui;
-	cv::Mat image,img2,img3;
+	cv::Mat image,img2,img3,dst;
 	cv::Mat imageCopy;
 	cv::Mat temp_image;
 	cv::Mat gray_image;

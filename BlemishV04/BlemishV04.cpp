@@ -35,6 +35,9 @@ int knownDefectCnt = 0;
 int WBcnt = 0;
 int Region_A = 60, Region_B = 80, Region_C = 100;
 float nowTh = 0;
+
+unsigned int Width=0,Height=0;
+
 //  1-3  4-7  8-15  16-31  32-63  64-128
 //    4   16    64    128    256    512
 
@@ -46,8 +49,22 @@ typedef struct {
 
 New_Blemish_ROI Blemish_ROI[128][1024];
 
+typedef struct
+{
+	bool TEST_LARGEBLEM = false;
+	int	ROI_XSIZE = 64;
+	int ROI_YSIZE = 48;
+	int INNER_SIZE = 60;
+	int OUTER_SIZE = 80;
+	int EDGE_SIZE = 100;
+	int CORNER_SIZE = 100;
+
+} BlemishSize;
+
+BlemishSize Semco_Blemish_Size[5];
 SigmaInfo Semco_Blemish_Spec[5];
-BlemishResult blemishResult;
+BlemishResult Semco_Blemish_Result[5];
+
 int LB_No=0;
 
 int leftValue, rightValue;
@@ -72,6 +89,20 @@ void logWr() {
 	fout << endl;
 
 }
+
+
+void BlemishV04::DisplayOutput() {
+
+	ui->log->clear();
+	ui->log->setFontPointSize(9);
+	ifstream in(".\\Test_Data.txt");
+	ostringstream outStr;
+	outStr << in.rdbuf();
+	string outContent = outStr.str();
+	ui->log->insertPlainText(outContent.c_str());
+
+}
+
 
 bool BlemishV04::loadParameter() {
 
@@ -120,7 +151,7 @@ bool BlemishV04::loadParameter() {
 	bth[1][2] = string((const char *)ui->Size2_C_Spec->document()->toPlainText().toLocal8Bit());
 	bth[1][3] = string((const char *)ui->Size2_D_Spec->document()->toPlainText().toLocal8Bit());
 
-	LB_No= ui->LB_No->document()->toPlainText().toInt();
+	LB_No= ui->LB->document()->toPlainText().toInt();
 
 	for (int x = 0; x < 4; x++) {
 		float thf = atof(th[x].c_str());
@@ -358,6 +389,21 @@ BlemishV04::~BlemishV04()
 	delete ui;
 }
 
+
+
+void BlemishV04::display_Image() {
+
+	cvtColor(image, dst, CV_BGR2RGB);
+	ui->textBrowser->setAlignment(Qt::AlignCenter);
+	QImage showImage((const uchar*)dst.data, dst.cols, dst.rows, dst.cols*dst.channels(), QImage::Format_RGB888);
+
+	//imgScaled = showImage.scaledToHeight(600, Qt::FastTransformation);
+	imgScaled = showImage.scaled(ui->label_show_image->size(), Qt::KeepAspectRatio);
+	ui->label_show_image->setPixmap(QPixmap::fromImage(imgScaled));
+
+
+}
+
 void BlemishV04::on_pushButton_open_image_clicked()
 {
 	QString filename = QFileDialog::getOpenFileName(this, tr("Open Image"), "", tr("Image File(*.bmp *.jpg *.jpeg *.png *.pbm *.pgm *.ppm)"));
@@ -393,7 +439,7 @@ void BlemishV04::on_pushButton_open_image_clicked()
 		ui->pushButton_image_processing_2->setEnabled(true);
 		ui->BlemishCheck2->setEnabled(true);
 		ui->saveGray->setEnabled(true);
-		ui->pushButton_BlemishCheckNew->setEnabled(true);
+		ui->pushButton_HQ_Blemish->setEnabled(true);
 		ui->pushButton_OC->setEnabled(true);
 		ui->pushButton_circle_Detect->setEnabled(true);
 		ui->pushButton_HQ_Blemish->setEnabled(true);
@@ -762,13 +808,29 @@ void BlemishV04::on_pushButton_blemishcheck2_clicked()
 }
 
 
-void BlemishV04::saveGrayImage_clicked()
+void BlemishV04::on_saveGrayImage_clicked()
 {
 	if (imageCopy.data != NULL) {
 		cvtColor(imageCopy, gray_image, CV_BGR2GRAY);
 
 		try {
 			imwrite("GrayImg.bmp", gray_image);
+		}
+		catch (runtime_error& ex) {
+			QMessageBox msgBox;
+			msgBox.setText(tr("Save Image Error"));
+			msgBox.exec();
+		}
+	}
+}
+
+
+void BlemishV04::on_saveDisplay_clicked()
+{
+	if (image.data != NULL) {
+	//	cvtColor(imageCopy, gray_image, CV_BGR2GRAY);
+		try {
+			imwrite("DisplayImg.bmp", image);
 		}
 		catch (runtime_error& ex) {
 			QMessageBox msgBox;
@@ -1027,6 +1089,7 @@ void BlemishV04::WBdotCheck(int x, int y, int Mx, int My, int area) {
 				}
 		}
 	}
+	DisplayOutput();
 }
 
 
@@ -1248,7 +1311,7 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 	img2 = gray_image.clone();
 	GaussianBlur(img2, img2, Size(9, 9), 2, 2);
 //	threshold(img2, img3, 150, 220, THRESH_BINARY);  //图像二值化，
-	threshold(img2, img3, bv*0.87, 220, THRESH_BINARY);  //图像二值化，
+	threshold(img2, img3, 170, 220, THRESH_BINARY);  //图像二值化，
 
 	namedWindow("detecte circles1", CV_NORMAL);
 	imshow("detecte circles1", img3);
@@ -1316,53 +1379,188 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 	stry = "y= " + stry + "\n";
 	ui->log->insertPlainText(strx.c_str());
 	ui->log->insertPlainText(stry.c_str());
+	int x = box.center.x - gray_image.cols / 2;
+	int y = box.center.y - gray_image.rows / 2;
+	strx = to_string(x);
+	stry = to_string(y);
 
-	strx = to_string(box.center.x - gray_image.cols / 2);
-	stry = to_string(box.center.y - gray_image.rows / 2);
+	float d = sqrt(x*x+y*y);
+	string strd = to_string(d);
+
 	strx = "OC_X= " + strx + "\n";
 	stry = "OC_Y= " + stry + "\n";
+	strd = "OC_Dis= " + strd + "\n";
+
 	ui->log->insertPlainText(strx.c_str());
 	ui->log->insertPlainText(stry.c_str());
+	ui->log->insertPlainText(strd.c_str());
 	ui->log->insertPlainText("~~~~~~~~~~~~~~~~~~~~\n");
 
 
 }
 
 
+string TCHAR2STRING (TCHAR *STR) {
+
+	int iLen = WideCharToMultiByte(CP_ACP, 0,STR, -1, NULL, 0, NULL, NULL);
+	char* chRtn = new char[iLen*sizeof(char)];
+	WideCharToMultiByte(CP_ACP, 0, STR, -1, chRtn, iLen, NULL, NULL);
+	std::string str(chRtn);
+	return str;
+}
 
 
-void Load_Sensor_ini() {
+void skip_Annotation(TCHAR* s) {
 
-	string str_LB = "LARGEBLEMISH";
-	TCHAR lpTexts[9];
-	GetPrivateProfileString(TEXT("RegionSetup"), TEXT("in_Size"), TEXT("0.333"), lpTexts, 8, TEXT(".\\specValue.ini"));
-	in_Size = CT2A(lpTexts);
-
-
-	if (LB_No > 0) {
-		str_LB = str_LB + '_';
-		str_LB = str_LB + to_string(LB_No);
+	for (int i = 0; i < 9; i++) {
+		if (s[i] == '/') {
+			s[i] = '\0';
+			break;
+		}
 	}
+
+}
+
+void Load_Sensor_Blemish() {
+
+	string keyName = "LARGEBLEMISH";
+	TCHAR lpTexts[9] = {0};
+
+	for (int i = 0; i < 6; i++) {
+		if (i != 0) {
+			keyName += '_';
+			keyName += to_string(i);
+		}
+		LPTSTR lpt = str2lpt(keyName);
+
+		Semco_Blemish_Size[i].INNER_SIZE = GetPrivateProfileInt(lpt, TEXT("INNER_SIZE"), 48, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Size[i].OUTER_SIZE = GetPrivateProfileInt(lpt, TEXT("OUTER_SIZE"), 48, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Size[i].EDGE_SIZE = GetPrivateProfileInt(lpt, TEXT("EDGE_SIZE"), 48, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Size[i].CORNER_SIZE = GetPrivateProfileInt(lpt, TEXT("EDGE_SIZE"), 48, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Size[i].ROI_XSIZE = GetPrivateProfileInt(lpt, TEXT("ROI_XSIZE"), 64, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Size[i].ROI_YSIZE = GetPrivateProfileInt(lpt, TEXT("ROI_YSIZE"), 48, TEXT(".\\Sensor.ini"));
+
+		GetPrivateProfileString(lpt, TEXT("TEST_LARGEBLEM"), TEXT("false"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+	
+
+		if(lpTexts[0]=='t'|| lpTexts[0] == 'T')
+			Semco_Blemish_Size[i].TEST_LARGEBLEM=true;
+		else 
+			Semco_Blemish_Size[i].TEST_LARGEBLEM = false;
+		
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_INNER"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+	//	skip_Annotation(lpTexts);
+		Semco_Blemish_Spec[i].sigma_inner = atof(CT2A(lpTexts));
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_OUTER"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_outer = atof(CT2A(lpTexts));
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_EDGE"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_edge = atof(CT2A(lpTexts));
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_CORNER"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_corner = atof(CT2A(lpTexts));
+
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_EDGE_LT"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_edgeLT = atof(CT2A(lpTexts));
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_EDGE_RT"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_edgeRT = atof(CT2A(lpTexts));
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_EDGE_LB"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_cornerLB = atof(CT2A(lpTexts));
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_EDGE_RB"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_cornerRB = atof(CT2A(lpTexts));
+
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_CORNER_LT"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_cornerLT = atof(CT2A(lpTexts));
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_CORNER_RT"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_cornerRT = atof(CT2A(lpTexts));
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_CORNER_LB"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_cornerLB = atof(CT2A(lpTexts));
+		GetPrivateProfileString(lpt, TEXT("THRESHOLD_CORNER_RB"), TEXT("0.333"), lpTexts, 8, TEXT(".\\Sensor.ini"));
+		Semco_Blemish_Spec[i].sigma_cornerRB = atof(CT2A(lpTexts));
+
+	}
+
 
 }
 
 
 void BlemishV04::on_pushButton_HQ_Blemish_clicked() {
 
-	LB_No = ui->LB_No->document()->toPlainText().toInt();
-	//	LB_No = GetPrivateProfileInt(_T("Blemish_Size1"), TEXT("Size1_Width"), 48, TEXT(".\\Sensor.ini"));
-	Load_Sensor_ini();
+	LB_No = ui->LB->document()->toPlainText().toInt();
+	Width = ui->width->document()->toPlainText().toInt();
+	Height = ui->height->document()->toPlainText().toInt();
 
+	QString filename = QFileDialog::getOpenFileName(this, tr("Open Image"), "", tr("Image File(*.raw)"));
+	QTextCodec *code = QTextCodec::codecForName("gb18030");
+	std::string name = code->fromUnicode(filename).data();
+
+	ui->textBrowser->setTextColor(QColor(0, 0, 0, 255));
+	ui->textBrowser->setFontPointSize(48);
+	ui->textBrowser->setText("NA");
+	ui->textBrowser->setAlignment(Qt::AlignCenter);
+
+	Load_Sensor_Blemish();
+
+	FILE *fp = NULL;
+
+
+	int ret = 0;
+	if (Width*Height == 0) {
+		QMessageBox msgBox;
+		msgBox.setText(tr("Plz input Img_width and Img_height value"));
+		msgBox.exec();
+		return;
+	}
+
+	unsigned char *pRawData8 = (unsigned char *)calloc(Width*Height, sizeof(unsigned char));
+	unsigned char *pRawData24 = (unsigned char *)calloc(Width*Height * 3, sizeof(unsigned char));
+
+	if (NULL == pRawData8)
+	{
+		QMessageBox msgBox;
+		msgBox.setText(tr("Fail to calloc buf"));
+		msgBox.exec();
+		return;
+	}
+
+	if (NULL == (fp = fopen(name.c_str(), "rb")))
+	{
+		QMessageBox msgBox;
+		msgBox.setText(tr("Fail to read"));
+		msgBox.exec();
+		return;
+	}
+
+	ret = fread(pRawData8, sizeof(unsigned char)*Width*Height, 1, fp);
+	BLEMISH_TYPE blemishType = BLEMISH_TYPE_BRIGHT;
+	char *debugFileName = ".\\debug.txt";
+
+	if (LB_No > 3) {
+		//	blemishType = BLEMISH_TYPE_BRIGHT;
+		ret = JLib_CAL_LargeBlemish3_Both(Width, Height, pRawData8, pRawData24,
+			Semco_Blemish_Size[LB_No].ROI_XSIZE, Semco_Blemish_Size[LB_No].ROI_YSIZE,
+			Semco_Blemish_Size[LB_No].INNER_SIZE, Semco_Blemish_Size[LB_No].OUTER_SIZE, Semco_Blemish_Size[LB_No].EDGE_SIZE, Semco_Blemish_Size[LB_No].CORNER_SIZE,
+			BLEMISH_TYPE_BRIGHT, NULL, &Semco_Blemish_Spec[LB_No], NULL, &Semco_Blemish_Result[LB_No], RGB(255, 0, 0), debugFileName, NULL);
+
+	//	ui->log->insertPlainText(to_string(ret).c_str());
+
+	}
+	else {
+		//	blemishType = BLEMISH_TYPE_DARK;
+		ret = JLib_CAL_LargeBlemish3_Both(Width, Height, pRawData8, pRawData24,
+			Semco_Blemish_Size[LB_No].ROI_XSIZE, Semco_Blemish_Size[LB_No].ROI_YSIZE,
+			Semco_Blemish_Size[LB_No].INNER_SIZE, Semco_Blemish_Size[LB_No].OUTER_SIZE, Semco_Blemish_Size[LB_No].EDGE_SIZE, Semco_Blemish_Size[LB_No].CORNER_SIZE,
+			BLEMISH_TYPE_DARK, &Semco_Blemish_Spec[LB_No], NULL, &Semco_Blemish_Result[LB_No], NULL, RGB(255, 0, 0), debugFileName, NULL);
+
+		ui->log->insertPlainText(to_string(ret).c_str());
+	}
+
+
+	IplImage *pRgbDataInt8 = cvCreateImage(cvSize(Width, Width), 8, 3);
+	memcpy(pRgbDataInt8->imageData, (char *)pRawData24, Width*Height*sizeof(unsigned short));
+	image = cvarrToMat(pRgbDataInt8);
+
+	display_Image();
 
 }
-
-
-
-
-
-
-
-
 
 
 

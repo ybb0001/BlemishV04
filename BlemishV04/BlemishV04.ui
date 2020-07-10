@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1035</width>
-    <height>770</height>
+    <width>995</width>
+    <height>775</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>BlemishV05</string>
+   <string>BlemishV06_20200221</string>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -19,9 +19,9 @@
   <widget class="QPushButton" name="pushButton_open_image">
    <property name="geometry">
     <rect>
-     <x>939</x>
+     <x>899</x>
      <y>620</y>
-     <width>91</width>
+     <width>90</width>
      <height>30</height>
     </rect>
    </property>
@@ -54,9 +54,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>749</x>
+     <x>710</x>
      <y>620</y>
-     <width>91</width>
+     <width>90</width>
      <height>30</height>
     </rect>
    </property>
@@ -70,9 +70,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>940</x>
-     <y>690</y>
-     <width>91</width>
+     <x>900</x>
+     <y>710</y>
+     <width>90</width>
      <height>30</height>
     </rect>
    </property>
@@ -84,8 +84,8 @@
    <property name="geometry">
     <rect>
      <x>840</x>
-     <y>20</y>
-     <width>111</width>
+     <y>10</y>
+     <width>131</width>
      <height>81</height>
     </rect>
    </property>
@@ -106,7 +106,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="Threshold_A">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>80</x>
      <y>645</y>
      <width>41</width>
      <height>28</height>
@@ -123,7 +123,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>645</y>
      <width>75</width>
      <height>28</height>
@@ -139,7 +139,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>675</y>
      <width>75</width>
      <height>28</height>
@@ -155,7 +155,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>705</y>
      <width>75</width>
      <height>28</height>
@@ -171,7 +171,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>735</y>
      <width>75</width>
      <height>28</height>
@@ -187,7 +187,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="Threshold_B">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>80</x>
      <y>675</y>
      <width>41</width>
      <height>28</height>
@@ -204,7 +204,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="Threshold_C">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>80</x>
      <y>705</y>
      <width>41</width>
      <height>28</height>
@@ -221,7 +221,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="Threshold_D">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>80</x>
      <y>735</y>
      <width>41</width>
      <height>28</height>
@@ -238,7 +238,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="edge_Allow">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>130</x>
      <y>705</y>
      <width>41</width>
      <height>28</height>
@@ -255,7 +255,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="outer_Allow">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>130</x>
      <y>675</y>
      <width>41</width>
      <height>28</height>
@@ -272,7 +272,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="inner_Allow">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>130</x>
      <y>645</y>
      <width>41</width>
      <height>28</height>
@@ -289,7 +289,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>130</x>
      <y>615</y>
      <width>41</width>
      <height>28</height>
@@ -305,7 +305,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>180</x>
      <y>615</y>
      <width>41</width>
      <height>28</height>
@@ -321,7 +321,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="inner_Spec">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>180</x>
      <y>645</y>
      <width>41</width>
      <height>28</height>
@@ -338,7 +338,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="edge_Spec">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>180</x>
      <y>705</y>
      <width>41</width>
      <height>28</height>
@@ -355,7 +355,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="outer_Spec">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>180</x>
      <y>675</y>
      <width>41</width>
      <height>28</height>
@@ -372,7 +372,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="inner_Limit">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>230</x>
      <y>645</y>
      <width>41</width>
      <height>28</height>
@@ -389,7 +389,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="edge_Limit">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>230</x>
      <y>705</y>
      <width>41</width>
      <height>28</height>
@@ -406,7 +406,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="outer_Limit">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>230</x>
      <y>675</y>
      <width>41</width>
      <height>28</height>
@@ -423,7 +423,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>230</x>
      <y>615</y>
      <width>41</width>
      <height>28</height>
@@ -439,7 +439,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="inner_Array">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>280</x>
      <y>645</y>
      <width>41</width>
      <height>28</height>
@@ -456,7 +456,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="edge_Array">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>280</x>
      <y>705</y>
      <width>41</width>
      <height>28</height>
@@ -473,7 +473,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="outer_Array">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>280</x>
      <y>675</y>
      <width>41</width>
      <height>28</height>
@@ -490,7 +490,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>280</x>
      <y>615</y>
      <width>41</width>
      <height>28</height>
@@ -506,8 +506,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QPushButton" name="saveValue">
    <property name="geometry">
     <rect>
-     <x>940</x>
-     <y>720</y>
+     <x>900</x>
+     <y>740</y>
      <width>90</width>
      <height>30</height>
     </rect>
@@ -556,7 +556,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>870</x>
      <y>330</y>
-     <width>51</width>
+     <width>50</width>
      <height>28</height>
     </rect>
    </property>
@@ -589,7 +589,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>870</x>
      <y>270</y>
-     <width>51</width>
+     <width>50</width>
      <height>28</height>
     </rect>
    </property>
@@ -606,7 +606,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>870</x>
      <y>300</y>
-     <width>51</width>
+     <width>50</width>
      <height>28</height>
     </rect>
    </property>
@@ -639,7 +639,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>10</x>
      <y>620</y>
-     <width>451</width>
+     <width>431</width>
      <height>151</height>
     </rect>
    </property>
@@ -652,9 +652,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QCheckBox" name="greenMode">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>320</x>
       <y>128</y>
-      <width>118</width>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -668,7 +668,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QTextEdit" name="out_Size">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>370</x>
       <y>60</y>
       <width>51</width>
       <height>28</height>
@@ -685,7 +685,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QTextEdit" name="in_Size">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>370</x>
       <y>30</y>
       <width>51</width>
       <height>28</height>
@@ -702,7 +702,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>320</x>
       <y>30</y>
       <width>61</width>
       <height>28</height>
@@ -718,7 +718,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>320</x>
       <y>60</y>
       <width>71</width>
       <height>28</height>
@@ -734,7 +734,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QTextEdit" name="SecondThd">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>370</x>
       <y>90</y>
       <width>51</width>
       <height>28</height>
@@ -751,7 +751,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_22">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>320</x>
       <y>90</y>
       <width>61</width>
       <height>28</height>
@@ -769,20 +769,20 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>820</x>
-     <y>115</y>
-     <width>210</width>
-     <height>250</height>
+     <y>105</y>
+     <width>171</width>
+     <height>511</height>
     </rect>
    </property>
    <property name="title">
-    <string>My Blemish TEST</string>
+    <string>Blemish TEST</string>
    </property>
    <widget class="QTextEdit" name="Size1_A_Spec">
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>125</y>
-      <width>51</width>
+      <y>135</y>
+      <width>50</width>
       <height>28</height>
      </rect>
     </property>
@@ -797,8 +797,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QCheckBox" name="blemishMode">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>40</y>
+      <x>100</x>
+      <y>260</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -810,11 +810,330 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>61</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Region&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size2_D_Spec">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>225</y>
+      <width>50</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;0.150&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size2_C_Spec">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>195</y>
+      <width>50</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;0.009&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size2_B_Spec">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>165</y>
+      <width>50</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size2_A_Spec">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>135</y>
+      <width>50</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size2_Width">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>100</y>
+      <width>31</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;24&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size2_Height">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>100</y>
+      <width>31</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;21&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>265</y>
+      <width>101</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;HQ Blemish&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size1_Height_2">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>425</y>
+      <width>31</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;36&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size1_Width_2">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>425</y>
+      <width>31</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;48&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="LB">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>305</y>
+      <width>31</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;16&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size1_Height_3">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>445</y>
+      <width>31</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;36&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size1_Width_3">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>445</y>
+      <width>31</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;48&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="width">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>305</y>
+      <width>51</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;4000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size1_Height_4">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>445</y>
+      <width>31</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;36&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Size1_Width_4">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>445</y>
+      <width>31</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;48&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="height">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>305</y>
+      <width>51</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;3000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="width_label">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>280</y>
+      <width>41</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>width</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hight_label">
+    <property name="geometry">
+     <rect>
+      <x>115</x>
+      <y>280</y>
+      <width>41</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>height</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QLabel" name="label_17">
    <property name="geometry">
     <rect>
-     <x>850</x>
+     <x>830</x>
      <y>180</y>
      <width>61</width>
      <height>28</height>
@@ -834,8 +1153,8 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>830</x>
-     <y>210</y>
-     <width>41</width>
+     <y>205</y>
+     <width>31</width>
      <height>28</height>
     </rect>
    </property>
@@ -845,22 +1164,6 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;48&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_15">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>130</y>
-     <width>61</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Region&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="scaledContents">
-    <bool>false</bool>
    </property>
   </widget>
   <widget class="QTextEdit" name="Region_A">
@@ -917,9 +1220,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QTextEdit" name="Size1_Height">
    <property name="geometry">
     <rect>
-     <x>880</x>
-     <y>210</y>
-     <width>41</width>
+     <x>870</x>
+     <y>205</y>
+     <width>31</width>
      <height>28</height>
     </rect>
    </property>
@@ -931,199 +1234,14 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;36&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="Size2_A_Spec">
-   <property name="geometry">
-    <rect>
-     <x>970</x>
-     <y>240</y>
-     <width>51</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="Size2_Height">
-   <property name="geometry">
-    <rect>
-     <x>980</x>
-     <y>210</y>
-     <width>41</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;21&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="Size2_C_Spec">
-   <property name="geometry">
-    <rect>
-     <x>970</x>
-     <y>300</y>
-     <width>51</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;0.009&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="Size2_D_Spec">
-   <property name="geometry">
-    <rect>
-     <x>970</x>
-     <y>330</y>
-     <width>51</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;0.150&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="Size2_B_Spec">
-   <property name="geometry">
-    <rect>
-     <x>970</x>
-     <y>270</y>
-     <width>51</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_16">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>330</y>
-     <width>41</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Corner</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_18">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>270</y>
-     <width>31</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Outer</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_19">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>240</y>
-     <width>31</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Inner</string>
-   </property>
-   <property name="scaledContents">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_20">
-   <property name="geometry">
-    <rect>
-     <x>940</x>
-     <y>180</y>
-     <width>71</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Size_2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="scaledContents">
-    <bool>false</bool>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="Size2_Width">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>210</y>
-     <width>41</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;24&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_21">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>300</y>
-     <width>31</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::RightToLeft</enum>
-   </property>
-   <property name="text">
-    <string>Edge</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="saveGray">
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="geometry">
     <rect>
-     <x>940</x>
-     <y>660</y>
+     <x>900</x>
+     <y>650</y>
      <width>90</width>
      <height>30</height>
     </rect>
@@ -1141,9 +1259,9 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="geometry">
     <rect>
-     <x>749</x>
+     <x>710</x>
      <y>650</y>
-     <width>91</width>
+     <width>90</width>
      <height>30</height>
     </rect>
    </property>
@@ -1151,29 +1269,29 @@ p, li { white-space: pre-wrap; }
     <string>异物Size2</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_BlemishCheckNew">
+  <widget class="QPushButton" name="pushButton_HQ_Blemish">
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="geometry">
     <rect>
-     <x>749</x>
+     <x>710</x>
      <y>680</y>
-     <width>91</width>
+     <width>90</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>异物新算法</string>
+    <string>HQ_DLL异物</string>
    </property>
   </widget>
   <widget class="QTextBrowser" name="log">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>440</x>
      <y>620</y>
-     <width>271</width>
-     <height>141</height>
+     <width>261</width>
+     <height>151</height>
     </rect>
    </property>
   </widget>
@@ -1183,9 +1301,9 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="geometry">
     <rect>
-     <x>749</x>
+     <x>710</x>
      <y>710</y>
-     <width>91</width>
+     <width>90</width>
      <height>30</height>
     </rect>
    </property>
@@ -1199,8 +1317,8 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="geometry">
     <rect>
-     <x>680</x>
-     <y>730</y>
+     <x>640</x>
+     <y>740</y>
      <width>61</width>
      <height>30</height>
     </rect>
@@ -1215,113 +1333,72 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="geometry">
     <rect>
-     <x>749</x>
+     <x>710</x>
      <y>740</y>
-     <width>91</width>
+     <width>90</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>Circle CHK</string>
+    <string>CircleCHK</string>
    </property>
   </widget>
-  <widget class="QGroupBox" name="groupBox_3">
+  <widget class="QPushButton" name="saveDisplay">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>820</x>
-     <y>370</y>
-     <width>211</width>
-     <height>111</height>
+     <x>900</x>
+     <y>680</y>
+     <width>90</width>
+     <height>30</height>
     </rect>
    </property>
-   <property name="title">
-    <string>HQ Blemish Setting &quot;Sensor.ini&quot;</string>
+   <property name="text">
+    <string>SaveDisplay</string>
    </property>
-   <widget class="QLabel" name="label_23">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>20</y>
-      <width>41</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::RightToLeft</enum>
-    </property>
-    <property name="text">
-     <string>LB_No.</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="LB_No">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>20</y>
-      <width>31</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;4&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="Blemish_Dark">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>51</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Dark</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="Blemish_Bright">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>61</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Bright</string>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QPushButton" name="pushButton_HQ_Blemish">
-   <property name="enabled">
+   <property name="checkable">
     <bool>false</bool>
    </property>
+  </widget>
+  <widget class="QLabel" name="label_20">
    <property name="geometry">
     <rect>
-     <x>850</x>
-     <y>620</y>
-     <width>80</width>
-     <height>30</height>
+     <x>910</x>
+     <y>180</y>
+     <width>61</width>
+     <height>28</height>
     </rect>
    </property>
    <property name="text">
-    <string>HQ Blemish</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Size_2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <zorder>groupBox_3</zorder>
-  <zorder>groupBox_2</zorder>
+  <widget class="QLabel" name="LB_No_label">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>385</y>
+     <width>31</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>LB_No</string>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
   <zorder>groupBox</zorder>
+  <zorder>groupBox_2</zorder>
   <zorder>pushButton_open_image</zorder>
   <zorder>pushButton_image_processing</zorder>
   <zorder>pushButton_image_processing_2</zorder>
@@ -1360,31 +1437,21 @@ p, li { white-space: pre-wrap; }
   <zorder>label_14</zorder>
   <zorder>label_17</zorder>
   <zorder>Size1_Width</zorder>
-  <zorder>label_15</zorder>
   <zorder>Region_A</zorder>
   <zorder>Region_B</zorder>
   <zorder>Region_C</zorder>
   <zorder>Size1_Height</zorder>
-  <zorder>Size2_A_Spec</zorder>
-  <zorder>Size2_Height</zorder>
-  <zorder>Size2_C_Spec</zorder>
-  <zorder>Size2_D_Spec</zorder>
-  <zorder>Size2_B_Spec</zorder>
-  <zorder>label_16</zorder>
-  <zorder>label_18</zorder>
-  <zorder>label_19</zorder>
-  <zorder>label_20</zorder>
-  <zorder>Size2_Width</zorder>
-  <zorder>label_21</zorder>
   <zorder>label_show_image</zorder>
   <zorder>saveGray</zorder>
   <zorder>BlemishCheck2</zorder>
-  <zorder>pushButton_BlemishCheckNew</zorder>
+  <zorder>pushButton_HQ_Blemish</zorder>
   <zorder>log</zorder>
   <zorder>pushButton_OC</zorder>
   <zorder>pushButton_clear</zorder>
   <zorder>pushButton_circle_Detect</zorder>
-  <zorder>pushButton_HQ_Blemish</zorder>
+  <zorder>saveDisplay</zorder>
+  <zorder>label_20</zorder>
+  <zorder>LB_No_label</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
