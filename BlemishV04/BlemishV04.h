@@ -33,6 +33,7 @@ public:
 	void readBlemishValue();
 	void saveValue_clicked();
 	void on_pushButton_open_image_clicked();
+	void on_pushButton_open_raw_clicked();
 	void on_pushButton_image_processing_clicked();
 	void on_pushButton_image_processing_2_clicked();
 	void on_pushButton_blemishcheck2_clicked();
@@ -40,10 +41,14 @@ public:
 	void on_pushButton_OC_clicked();
 	void on_pushButton_clear_clicked();
 	void on_pushButton_circle_Detect_clicked();
-	void on_pushButton_HQ_Blemish_clicked();
+	void on_pushButton_HQ_Blemish_2_clicked();
+	void on_pushButton_HQ_Blemish_3_clicked();
 
 	void on_saveDisplay_clicked();
 	void on_saveGrayImage_clicked();
+	void on_pushButton_sensor_clicked();
+	void on_pushButton_spec_search_clicked();
+	
 
 	void drawDefectRect(int i,int j, int mode);
 	void drawDefectCircle(int i, int j, int b, int g, int r);
