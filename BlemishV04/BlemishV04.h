@@ -49,6 +49,9 @@ public:
 	void on_pushButton_sensor_clicked();
 	void on_pushButton_spec_search_clicked();
 	
+	void on_pushButton_OB_clicked();
+	void on_pushButton_cut_clicked();
+	float get_ROI_SUM(Mat ROI_image);
 
 	void drawDefectRect(int i,int j, int mode);
 	void drawDefectCircle(int i, int j, int b, int g, int r);

@@ -1376,7 +1376,6 @@ void BlemishV04::on_pushButton_BlemishCheckNew_clicked() {
 
 void BlemishV04::on_pushButton_circle_Detect_clicked() {
 
-
 	image = imageCopy.clone();
 	cvtColor(image, gray_image, CV_BGR2GRAY);
 	NG = false;
@@ -1385,7 +1384,7 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 	img2 = gray_image.clone();
 	GaussianBlur(img2, img2, Size(9, 9), 2, 2);
 //	threshold(img2, img3, 150, 220, THRESH_BINARY);  //图像二值化，
-	threshold(img2, img3, 170, 220, THRESH_BINARY);  //图像二值化，
+	threshold(img2, img3, 150, 220, THRESH_BINARY);  //图像二值化，
 
 	namedWindow("detecte circles1", CV_NORMAL);
 	imshow("detecte circles1", img3);
@@ -1658,6 +1657,7 @@ void BlemishV04::on_pushButton_HQ_Blemish_3_clicked() {
 
 void BlemishV04::on_pushButton_HQ_Blemish_2_clicked() {
 
+	Load_Sensor_Blemish();
 	image = imageCopy.clone();
 	LB_No = ui->LB->document()->toPlainText().toInt();
 
@@ -1833,6 +1833,138 @@ void BlemishV04::on_pushButton_spec_search_clicked() {
 		ui->log->insertPlainText("\n");
 	}
 }
+
+
+
+float BlemishV04::get_ROI_SUM(Mat ROI_image) {
+
+	int sum = 0;
+	for (int i = 0; i < ROI_image.rows; i++) {
+		unsigned short* inData = ROI_image.ptr<unsigned short>(i);
+		for (int j = 0; j < ROI_image.cols; j++) {
+			sum += inData[j];
+		}
+	}
+
+	return (float)sum / ROI_image.rows / ROI_image.cols;
+}
+
+
+
+void BlemishV04::on_pushButton_OB_clicked() {
+
+	LB_No = ui->LB->document()->toPlainText().toInt();
+	Width = ui->width->document()->toPlainText().toInt();
+	Height = ui->height->document()->toPlainText().toInt();
+
+	QString filename = QFileDialog::getOpenFileName(this, tr("Open Image"), "", tr("Image File(*.raw)"));
+	QTextCodec *code = QTextCodec::codecForName("gb18030");
+	std::string name = code->fromUnicode(filename).data();
+
+	ui->textBrowser->setTextColor(QColor(0, 0, 0, 255));
+	ui->textBrowser->setFontPointSize(48);
+	ui->textBrowser->setText("NA");
+	ui->textBrowser->setAlignment(Qt::AlignCenter);
+
+	FILE *fp = NULL;
+
+	ret = 0;
+	if (Width*Height == 0) {
+		QMessageBox msgBox;
+		msgBox.setText(tr("Plz input Img_width and Img_height value"));
+		msgBox.exec();
+		return;
+	}
+	unsigned short *pRawData = (unsigned short *)calloc(Width*Height, sizeof(unsigned short));
+
+	if (NULL == pRawData)
+	{
+		QMessageBox msgBox;
+		msgBox.setText(tr("Fail to calloc buf"));
+		msgBox.exec();
+		return;
+	}
+
+	ifstream in(name.c_str());
+	in.seekg(0, ios::end); //设置文件指针到文件流的尾部
+	streampos ps = in.tellg(); //读取文件指针的位置
+	in.close(); //关闭文件流
+
+	if (NULL == (fp = fopen(name.c_str(), "rb")))
+	{
+		QMessageBox msgBox;
+		msgBox.setText(tr("Fail to read"));
+		msgBox.exec();
+		return;
+	}
+
+	if (Width*Height * 2 != ps)
+	{
+		QMessageBox msgBox;
+		msgBox.setText(tr("Width * Height Size does not match Raw Size!"));
+		msgBox.exec();
+		return;
+	}
+
+	ret = fread(pRawData, sizeof(unsigned short)*Width*Height, 1, fp);
+
+	IplImage *pBayerData = cvCreateImage(cvSize(Width, Height), 16, 1);
+	IplImage *pRgbDataInt8 = cvCreateImage(cvSize(Width, Height), 8, 1);
+
+	memcpy(pBayerData->imageData, (char *)pRawData, Width*Height*sizeof(unsigned short));
+	temp_image = cvarrToMat(pBayerData);
+
+	for (int i = 0; i < Height-40; i +=40) {
+		for (int j = 0; j < Width-40; j+=40) {
+			gray_image = temp_image(Rect(j, i, 40, 40));
+			float sum = get_ROI_SUM(gray_image);
+			fout << sum << "	";
+
+			if (sum > 65) {
+				string s = to_string(j) + " "+to_string(i) + " " + to_string(sum)+"\n";
+				ui->log->insertPlainText(s.c_str());
+			}
+		}
+		fout <<  "\n";
+	}
+
+	ui->log->insertPlainText("OPPO OB test done!");
+	cvReleaseImage(&pBayerData);
+}
+
+
+
+void BlemishV04::on_pushButton_cut_clicked() {
+
+	QString filename = QFileDialog::getOpenFileName(this, tr("Open Image"), "", tr("Image File(*.bmp *.jpg *.jpeg *.png *.pbm *.pgm *.ppm)"));
+	QTextCodec *code = QTextCodec::codecForName("gb18030");
+	std::string name = code->fromUnicode(filename).data();
+
+	if (name.size() < 2)
+		return;
+
+	image = imread(name);
+
+	if (image.cols!=4352 || image.rows!=3008) {
+		ui->log->insertPlainText("not MC 13M image!\n");
+		return;
+	}
+	img2 = image(Rect(176,0,4000,3008));
+	imwrite("43.bmp", img2);
+
+	img3 = image(Rect(0, 280, 4352, 2448));
+	imwrite("169.bmp", img3);
+
+	ui->log->insertPlainText("BMP cutting done!\n");
+}
+
+
+
+
+
+
+
+
 
 /*
 image = imageCopy.clone();
