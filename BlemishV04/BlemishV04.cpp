@@ -12,10 +12,12 @@
 #include<math.h>
 #include<LargeBlemish.h>
 #include<ji_libdef.h>
+#include<BlemishRawDll.h>
 
 #define MaxDefect 50
 #define MaxDefectSize 512
 #define MaxDefectRange 64
+
 
 using namespace cv;
 using namespace std;
@@ -35,7 +37,7 @@ int lineThickness = 8;
 int knownDefectCnt = 0;
 int WBcnt = 0;
 int Region_A = 60, Region_B = 80, Region_C = 100;
-float nowTh = 0;
+float nowTh = 0, OB_Result[408][308][2][2];
 int ret = 0;
 
 unsigned int Width=0,Height=0;
@@ -518,12 +520,71 @@ void BlemishV04::on_pushButton_open_image_clicked()
 		ui->BlemishCheck2->setEnabled(true);
 		ui->saveGray->setEnabled(true);
 		ui->pushButton_HQ_Blemish_2->setEnabled(true);
-		ui->pushButton_OC->setEnabled(true);
+		ui->pushButton_Xiaomi->setEnabled(true);
 		ui->pushButton_circle_Detect->setEnabled(true);
 		ui->pushButton_HQ_Blemish_3->setEnabled(true);
 
 		display_Image();
 	}
+}
+
+
+void BlemishV04::on_pushButton_Xiaomi_OC_clicked(){
+
+	image = imageCopy.clone();
+	cvtColor(image, gray_image, CV_BGR2GRAY);
+	vector<Point> each_BV[256];
+
+	for (int i = 0; i < gray_image.rows; i++) {
+		const uchar* inData = gray_image.ptr<uchar>(i);
+		for (int j = 0; j < gray_image.cols; j++) {
+			each_BV[inData[j]].push_back(Point(j,i));
+		}
+	}
+	
+	float th = 0.05, x = 0, y = 0;
+	int Max_point = gray_image.rows*gray_image.cols*th;
+//	Max_point = 1700;
+	int cnt = 0;
+	float x_weight = 0, y_weight = 0, x1 = 0, y1 = 0;
+	for (int m = 255; m > 0; m--) 
+	if(each_BV[m].size()>0){
+		for (int n = 0; n <  each_BV[m].size(); n++) {
+			vector<Point> ::iterator start = each_BV[m].begin();
+			while (start != each_BV[m].end()) {
+				y += (*start).y*m;
+				y_weight += m;
+				x += (*start).x*m;
+				x_weight += m;
+
+				x1+= (*start).x;
+				y1 += (*start).y;
+				++cnt;
+				++start;
+			}
+		}
+		Point2f OC1,OC2;
+		
+		OC1.x = x / x_weight;
+		OC1.y = y / y_weight;
+		OC2.x = x1 / cnt;
+		OC2.y = y1 / cnt;
+
+		if(cnt>Max_point)
+			break;
+	}
+
+
+	float OC_X = x / x_weight - gray_image.cols/2;
+	float OC_Y = y / y_weight - gray_image.rows / 2;
+
+	string strd = to_string(OC_X);
+	strd = "OC.x= " + strd + "\n";
+	ui->log->insertPlainText(strd.c_str());
+	strd = to_string(OC_Y);
+	strd = "OC.y= " + strd + "\n";
+	ui->log->insertPlainText(strd.c_str());
+
 }
 
 
@@ -1220,27 +1281,212 @@ void BlemishV04::on_pushButton_image_processing_2_clicked() {
 }
 
 
-void BlemishV04::on_pushButton_OC_clicked() {
+void BlemishV04::on_pushButton_Xiaomi_clicked() {
+
+	unsigned char DecData[262128], QC_LSC[3536];
+	string name = "Data.bin";
+	ifstream fin(name, std::ios::binary);
+
+	struct _stat info;
+	_stat(name.c_str(), &info);
+	int EEP_Size = info.st_size;
+
+	unsigned char szBuf[262128] = { 0 };
+	fin.read((char*)&szBuf, sizeof(char) * EEP_Size);
+
+	int EEP_start = 108, k = 0;;
+	for (int i = 0; i < 3536; i++) {
+		QC_LSC[i] = szBuf[i + EEP_start];
+	}
+	int * QC_data = (int*)QC_LSC;
+
+	fin.close();
+
+	RESULT_FLAG result_flag = { 0 };
+	defect_struct defect_ROI = { 0 };
+	RU_node_struct RU = { 0 };
+	int ret = 0;
+	IMAGE_INFO inputinfo;
+	OTP_INPUT otp_input;
+	BLEMISH_INPUT blemish_input;
+	OC_RESULT oc_result;
+	OTP_RESULT otp_result;
+	BLEMISH_RESULT blemish_result;
+
+	otp_input.qualcomm_block = QC_data;
+	otp_input.cs_spec = 20;
+	otp_input.ls_spec = 25;
+	otp_input.Y_dist_spec = 30;
+	otp_input.mtk_block;
+	otp_input.rgain = 0.712;
+	otp_input.bgain = 0.565;
+	otp_input.radial_ratio = 0.8;
+	otp_input.correct_ratio = 0.9;
+
+	//inputinfo.rawData = temp_image.data;	
+	name = "1.raw";
+	inputinfo.filename = "1.raw";
+	inputinfo.pattern = "GBRG";
+	inputinfo.width = 4640;
+	inputinfo.height = 3472;
+	inputinfo.platform = 2;
+	inputinfo.imageSave = 1;
+	inputinfo.txtSave = 1;
+	inputinfo.OTPTest = 0;
+	inputinfo.BPC = 1;
+	inputinfo.rawData = new unsigned char[inputinfo.width * inputinfo.height];
+
+	FILE *fp = NULL;
+	fp = fopen(name.c_str(), "rb");
+
+	if (NULL == (fp = fopen(name.c_str(), "rb")))
+	{
+		QMessageBox msgBox;
+		msgBox.setText(tr("Fail to read"));
+		msgBox.exec();
+		return;
+	}
+
+	ret = fread(inputinfo.rawData, sizeof(unsigned char)*inputinfo.width*inputinfo.height, 1, fp);
+
+	blemish_input.blemishArea_adjust = 0;
+	blemish_input.muraArea_adjust = 0;
+	blemish_input.singleSpec = 30;
+	blemish_input.multiSpec = 30;
+	blemish_input.muraDiff_spec = 3.0;
+	blemish_input.defectThreshCenter = 0.15;
+	blemish_input.defectThreshAround = 0.18;
+	blemish_input.RU_center_spec = 9;
+	blemish_input.RU_corner_spec = 12;
+	blemish_input.RU_edge_spec = 9;
+	blemish_input.OC_spec = 65;
+
+	ret = BlemishRawFunc(inputinfo, otp_input, blemish_input, &oc_result, &otp_result, &blemish_result, &result_flag);
+
+	if (ret != 1) {
+		string strd = to_string(ret);
+		strd = "XiaoMi DLL result= " + strd + "\n";
+		ui->log->insertPlainText(strd.c_str());
+	}
+	else {
+		string strd = to_string(oc_result.OC_w);
+		strd = "OC_X result= " + strd + "\n";
+		ui->log->insertPlainText(strd.c_str());
+
+		strd = to_string(oc_result.OC_h);
+		strd = "OC_Y result= " + strd + "\n";
+		ui->log->insertPlainText(strd.c_str());
+
+		strd = to_string(oc_result.OC_dis);
+		strd = "OC_Dis result= " + strd + "\n";
+		ui->log->insertPlainText(strd.c_str());
+	}
+
+
+}
+
+
+int get_BV(Mat gray_img) {
+
+	Point2i center;
+	int center_ROI_size = 16;
+	int width = gray_img.cols;
+	int height = gray_img.rows;
+	center.x = width / 2 + 1;
+	center.y = height / 2 + 1;
+	int rw = (width % center_ROI_size) / 2;
+	int rh = (height % center_ROI_size) / 2;
+	int x = width / center_ROI_size;
+	int y = height / center_ROI_size;
+
+	int part_width = width / center_ROI_size;
+	int part_height = height / center_ROI_size;
+
+	Mat Center_Img = gray_img(Rect(rw+x*7, rh+y*7, 2*x, 2*y));
+
+	int n = 0,sum=0;
+	for (int i = 0; i < Center_Img.rows; i++){
+		uchar* inData = Center_Img.ptr<uchar>(i);
+		for (int j = 0; j < Center_Img.cols; j++) 
+			if (inData[j] > 128) {
+				sum += inData[j];
+				n++;
+			}
+	}
+	return sum / n;	 
+}
+
+
+void BlemishV04::on_pushButton_SFR_OC_clicked() {
 
 	cvtColor(imageCopy, gray_image, CV_BGR2GRAY);
-	Point2i Center = OC(gray_image);
+	int OC_TH = 0.75 *get_BV(gray_image);
+	threshold(gray_image, bin, 80, 100, THRESH_BINARY);
 
-	string strx = to_string(Center.x);
-	string stry = to_string(Center.y);
+	Mat Erode_Bin;	
+	vector<Point> Circle_edge;
+	Mat element = getStructuringElement(MORPH_RECT, Size(7, 7));
+	erode(bin, Erode_Bin, element);
+
+	imwrite("Erode_Bin.bmp", Erode_Bin);	
+	img2 = gray_image.clone();
+	imwrite("gray_image.bmp", img2);
+	for (int i = 0; i < gray_image.rows; i++) {
+		uchar* Erode_Data = Erode_Bin.ptr<uchar>(i);
+		uchar* gray_Data = img2.ptr<uchar>(i);
+		uchar* img_Data = image.ptr<uchar>(i);
+		for (int j = 0; j < gray_image.cols; j++)
+ 			if (Erode_Data[j] ==0) {
+				gray_Data[j] = 255;
+			}
+			else if (gray_Data[j] < OC_TH-1|| gray_Data[j] > OC_TH + 1) {
+				gray_Data[j] = 255;
+			}
+			else if (gray_Data[j] > OC_TH - 1 && gray_Data[j] < OC_TH + 1) {
+				
+				Circle_edge.push_back(Point(j,i));
+				gray_Data[j] = 0;
+				img_Data[3 * j] = 0;
+				img_Data[3 * j+1] = 0;
+				img_Data[3 * j+2] = 255;
+			}
+	}
+	imwrite("Canny_image.bmp", img2);
+	//标准圆在图片上一般是椭圆，所以采用OpenCV中拟合椭圆的方法求解中心
+	Mat pointsf;
+	//	Mat(contours[0]).convertTo(pointsf, CV_32F);
+	Mat(Circle_edge).convertTo(pointsf, CV_32F);
+
+	RotatedRect box = fitEllipse(pointsf);
+
+	string strx = to_string(box.center.x);
+	string stry = to_string(box.center.y);
 	strx = "x= " + strx + "\n";
 	stry = "y= " + stry + "\n";
 	ui->log->insertPlainText(strx.c_str());
 	ui->log->insertPlainText(stry.c_str());
+	int x = box.center.x - gray_image.cols / 2;
+	int y = box.center.y - gray_image.rows / 2;
+	strx = to_string(x);
+	stry = to_string(y);
 
-	strx = to_string(Center.x-gray_image.cols/2);
-	stry = to_string(Center.y-gray_image.rows/2);
+	float d = sqrt(x*x + y*y);
+	string strd = to_string(d);
+
 	strx = "OC_X= " + strx + "\n";
 	stry = "OC_Y= " + stry + "\n";
+	strd = "OC_Dis= " + strd + "\n";
+
 	ui->log->insertPlainText(strx.c_str());
 	ui->log->insertPlainText(stry.c_str());
+	ui->log->insertPlainText(strd.c_str());
 	ui->log->insertPlainText("~~~~~~~~~~~~~~~~~~~~\n");
 
+
+	display_Image();
+
 }
+
 
 void BlemishV04::on_pushButton_clear_clicked() {
 
@@ -1379,12 +1625,12 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 	image = imageCopy.clone();
 	cvtColor(image, gray_image, CV_BGR2GRAY);
 	NG = false;
-	unsigned char bv = BV(gray_image);
+	unsigned char bv = get_BV(gray_image);
 
 	img2 = gray_image.clone();
 	GaussianBlur(img2, img2, Size(9, 9), 2, 2);
 //	threshold(img2, img3, 150, 220, THRESH_BINARY);  //图像二值化，
-	threshold(img2, img3, 150, 220, THRESH_BINARY);  //图像二值化，
+	threshold(img2, img3, 0.8*bv, 0.8*bv+10, THRESH_BINARY);  //图像二值化，
 
 	namedWindow("detecte circles1", CV_NORMAL);
 	imshow("detecte circles1", img3);
@@ -1394,7 +1640,7 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 	//	imshow("detect circles2", img3);
 
 	vector<vector<Point>>contours;
-	vector<Vec4i>hierarchy;
+	vector<Vec4i>hierarchy;  
 	findContours(img3, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);//查找出所有的圆边界
 /*	
 	int index = 0;
@@ -1438,7 +1684,6 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 		}
 	}
 
-	
 	//标准圆在图片上一般是椭圆，所以采用OpenCV中拟合椭圆的方法求解中心
 	Mat pointsf;
 //	Mat(contours[0]).convertTo(pointsf, CV_32F);
@@ -1468,7 +1713,6 @@ void BlemishV04::on_pushButton_circle_Detect_clicked() {
 	ui->log->insertPlainText(stry.c_str());
 	ui->log->insertPlainText(strd.c_str());
 	ui->log->insertPlainText("~~~~~~~~~~~~~~~~~~~~\n");
-
 
 }
 
@@ -1568,8 +1812,18 @@ void BlemishV04::on_pushButton_open_raw_clicked() {
 
 	temp_image = cvarrToMat(pRgbDataInt8);
 	img2 = temp_image.clone();
-	temp_image = img2.clone();
 	gray_image = img2.clone();
+
+
+
+	int size = Width*Height;
+	String tn = name + "_8.raw";
+	std::ofstream fout(tn, std::ios::binary);
+
+	for (int i = 0; i < size; i ++) {
+		unsigned char t = pRawData[i] >> 2;
+		fout.write((char*)&t, sizeof(char));
+	}
 
 	bool map = ui->GR->isChecked();
 	if (map) {
@@ -1850,6 +2104,25 @@ float BlemishV04::get_ROI_SUM(Mat ROI_image) {
 }
 
 
+float BlemishV04::get_ROI_SUM2(int m, int n, Mat ROI_image) {
+
+	float sum = 0;
+	for (int i = 0; i < ROI_image.rows; i++) {
+		unsigned short* inData = ROI_image.ptr<unsigned short>(i);
+		for (int j = 0; j < ROI_image.cols; j++) {
+			int a = i % 2, b = j % 2;
+			OB_Result[m][n][a][b] += inData[j];
+		}
+	}
+
+	for (int i = 0; i < 2; i++)
+		for (int j = 0; j < 2; j++) {
+			OB_Result[m][n][i][j] /= 400;
+		}
+
+	return 0;
+}
+
 
 void BlemishV04::on_pushButton_OB_clicked() {
 
@@ -1914,19 +2187,54 @@ void BlemishV04::on_pushButton_OB_clicked() {
 	memcpy(pBayerData->imageData, (char *)pRawData, Width*Height*sizeof(unsigned short));
 	temp_image = cvarrToMat(pBayerData);
 
-	for (int i = 0; i < Height-40; i +=40) {
-		for (int j = 0; j < Width-40; j+=40) {
+	for (int i = 0; i < Height - 40; i += 40) {
+		for (int j = 0; j < Width - 40; j += 40) {
 			gray_image = temp_image(Rect(j, i, 40, 40));
-			float sum = get_ROI_SUM(gray_image);
-			fout << sum << "	";
-
-			if (sum > 65) {
-				string s = to_string(j) + " "+to_string(i) + " " + to_string(sum)+"\n";
-				ui->log->insertPlainText(s.c_str());
-			}
+			float sum = get_ROI_SUM2(i / 40, j / 40, gray_image);
 		}
-		fout <<  "\n";
 	}
+
+	float whole_OB[2][2] = { 0 }, min_OB[2][2] = { 500000000,500000000 ,500000000 ,500000000 }, max_OB[2][2] = { 0 };
+	for (int m = 0; m < 2; m++)
+		for (int n = 0; n < 2; n++) {
+			int cnt = 0;
+			for (int i = 0; i < Height - 40; i += 40) {
+				for (int j = 0; j < Width - 40; j += 40) {
+
+					whole_OB[m][n] += OB_Result[i / 40][j / 40][m][n];
+					cnt++;
+						fout << OB_Result[i/40][j/40][m][n] << "	";
+					if (OB_Result[i / 40][j / 40][m][n] > 65) {
+						string s = to_string(j / 40) + " " + to_string(i / 40) + " " + to_string(OB_Result[i / 40][j / 40][m][n]) + "\n";
+						ui->log->insertPlainText(s.c_str());
+					}
+					if (OB_Result[i / 40][j / 40][m][n]>max_OB[m][n])
+						max_OB[m][n] = OB_Result[i / 40][j / 40][m][n];
+
+					if (OB_Result[i / 40][j / 40][m][n]<min_OB[m][n])
+						min_OB[m][n] = OB_Result[i / 40][j / 40][m][n];
+
+				}
+					fout << "\n";
+			}
+			whole_OB[m][n] /= cnt;
+				fout << "\n";
+		}
+
+	for (int m = 0; m < 2; m++)
+		for (int n = 0; n < 2; n++) {
+			fout << "Whole Image OB CH" + to_string(2 * m + n) + ":	";
+			fout << whole_OB[m][n] << endl;
+		}
+
+	for (int m = 0; m < 2; m++)
+		for (int n = 0; n < 2; n++) {
+			fout << "40x40 OB Min CH" + to_string(2 * m + n) + ":	";
+			fout << min_OB[m][n] << endl;
+			fout << "40x40 OB Max CH" + to_string(2 * m + n) + ":	";
+			fout << max_OB[m][n] << endl;
+		}
+
 
 	ui->log->insertPlainText("OPPO OB test done!");
 	cvReleaseImage(&pBayerData);

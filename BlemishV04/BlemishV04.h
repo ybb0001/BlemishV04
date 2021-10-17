@@ -14,6 +14,7 @@
 #include <afx.h>
 #include <string>
 #include "ISM_Test.h"
+#include "BlemishRawDll.h"
 
 namespace Ui {
 	class BlemishV04;
@@ -38,11 +39,13 @@ public:
 	void on_pushButton_image_processing_2_clicked();
 	void on_pushButton_blemishcheck2_clicked();
 	void on_pushButton_BlemishCheckNew_clicked();
-	void on_pushButton_OC_clicked();
+	void on_pushButton_Xiaomi_clicked();
+	void on_pushButton_SFR_OC_clicked();
 	void on_pushButton_clear_clicked();
 	void on_pushButton_circle_Detect_clicked();
 	void on_pushButton_HQ_Blemish_2_clicked();
 	void on_pushButton_HQ_Blemish_3_clicked();
+	void on_pushButton_Xiaomi_OC_clicked();
 
 	void on_saveDisplay_clicked();
 	void on_saveGrayImage_clicked();
@@ -52,6 +55,7 @@ public:
 	void on_pushButton_OB_clicked();
 	void on_pushButton_cut_clicked();
 	float get_ROI_SUM(Mat ROI_image);
+	float get_ROI_SUM2(int m, int n, Mat ROI_image);
 
 	void drawDefectRect(int i,int j, int mode);
 	void drawDefectCircle(int i, int j, int b, int g, int r);
@@ -65,7 +69,7 @@ public:
 
 private:
 	Ui::BlemishV04 *ui;
-	cv::Mat image,img2,img3,dst;
+	cv::Mat image,img2,img3,dst,bin;
 	cv::Mat imageCopy;
 	cv::Mat temp_image;
 	cv::Mat gray_image;
